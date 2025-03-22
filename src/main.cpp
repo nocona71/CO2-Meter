@@ -65,7 +65,7 @@ void loop() {
     display.println("CO2 Meter");
 
     // Helper function to align values
-    auto printAligned = [&](const char *label, float value, const char *unit, int row) {
+    auto printAligned = [&](const char *label, float value, const char *unit, int row, int offset = 0) {
       char valueBuffer[8];
       snprintf(valueBuffer, sizeof(valueBuffer), "%.2f", value); // Format value with 2 decimals
 
@@ -84,8 +84,8 @@ void loop() {
       display.setCursor(0, row);
       display.print(label);
 
-      // Print value and unit aligned to the right of the label
-      display.setCursor(SCREEN_WIDTH - valueWidth, row);
+      // Print value and unit aligned to the right of the label with an offset
+      display.setCursor(SCREEN_WIDTH - valueWidth - offset - 12, row); // Shift 2 characters (12 pixels) to the left
       display.print(fullValue);
     };
 
@@ -93,13 +93,13 @@ void loop() {
     printAligned("CO2:", co2, "ppm", 16);
 
     // Display Temperature (SCD30)
-    printAligned("T (SCD30):", temperatureSCD, "C", 26);
+    printAligned("T (SCD30):", temperatureSCD, "C", 26, 12);
 
     // Display Temperature (BMP280)
-    printAligned("T (BMP280):", temperatureBMP, "C", 36);
+    printAligned("T (BMP280):", temperatureBMP, "C", 36, 12);
 
     // Display Humidity
-    printAligned("Humidity:", humidity, "%", 46);
+    printAligned("Humidity:", humidity, "%", 46, 12);
 
     // Display Pressure
     printAligned("Pressure:", pressure, "hPa", 56);
