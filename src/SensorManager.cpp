@@ -3,19 +3,19 @@
 #include <EEPROM.h>
 
 bool SensorManager::initializeSensors() {
-    Logger::debug("Initializing BMP280 sensor...");
-    if (!bmp.begin(0x76)) {
-        Logger::error("Failed to initialize BMP280 sensor!");
+    Logger::debug("Initializing pressure sensor...");
+    if (pressureSensor && !pressureSensor->begin(0x76)) {
+        Logger::error("Failed to initialize pressure sensor!");
         return false;
     }
-    Logger::debug("BMP280 sensor initialized successfully");
+    Logger::debug("Pressure sensor initialized successfully");
     
-    Logger::debug("Initializing SCD30 sensor...");
-    if (!scd30.begin()) {
-        Logger::error("Failed to initialize SCD30 sensor!");
+    Logger::debug("Initializing CO2 sensor...");
+    if (co2Sensor && !co2Sensor->begin()) {
+        Logger::error("Failed to initialize CO2 sensor!");
         return false;
     }
-    Logger::debug("SCD30 sensor initialized successfully");
+    Logger::debug("CO2 sensor initialized successfully");
     
     return true;
 }
@@ -68,7 +68,7 @@ void SensorManager::calibrate(DisplayManager& display) {
     String message = "Attempting forced recalibration with CO2 value: " + String(FRESH_AIR_CO2);
     Logger::debug(message.c_str());
     
-    if (scd30.setForcedRecalibrationFactor(FRESH_AIR_CO2)) {
+    if (co2Sensor && co2Sensor->setForcedRecalibrationFactor(FRESH_AIR_CO2)) {
         display.showCalibrationMessage(MSG_CALIBRATION_SUCCESS, MSG_CALIBRATION_READY);
         Logger::info("Calibration successful!");
     } else {
@@ -84,7 +84,11 @@ void SensorManager::calibrate(DisplayManager& display) {
 }
 
 float SensorManager::getCO2() {
-    float value = scd30.getCO2();
+    if (!co2Sensor) {
+        return lastValidCO2;
+    }
+    
+    float value = co2Sensor->getCO2();
     
     // Create a String for logging
     String message = "CO2 reading: " + String(value) + " ppm";
@@ -102,10 +106,14 @@ float SensorManager::getCO2() {
 }
 
 float SensorManager::getTemperatureSCD() {
-    float value = scd30.getTemperature();
+    if (!co2Sensor) {
+        return lastValidTempSCD;
+    }
+    
+    float value = co2Sensor->getTemperature();
     
     // Create a String for logging
-    String message = "SCD30 temperature: " + String(value) + " °C";
+    String message = "CO2 sensor temperature: " + String(value) + " °C";
     
     // Check if reading is valid (non-zero and reasonable temperature range)
     if (value <= -40 || value > 85) { // SCD30 temperature range limits
@@ -120,7 +128,11 @@ float SensorManager::getTemperatureSCD() {
 }
 
 float SensorManager::getHumidity() {
-    float value = scd30.getHumidity();
+    if (!co2Sensor) {
+        return lastValidHumidity;
+    }
+    
+    float value = co2Sensor->getHumidity();
     
     // Create a String for logging
     String message = "Humidity: " + String(value) + " %";
@@ -138,14 +150,22 @@ float SensorManager::getHumidity() {
 }
 
 float SensorManager::getTemperatureBMP() {
-    float value = bmp.readTemperature();
-    String message = "BMP280 temperature: " + String(value) + " °C";
+    if (!pressureSensor) {
+        return 20.0f; // Default room temperature
+    }
+    
+    float value = pressureSensor->readTemperature();
+    String message = "Pressure sensor temperature: " + String(value) + " °C";
     Logger::debug(message.c_str());
     return value;
 }
 
 float SensorManager::getPressure() {
-    float value = bmp.readPressure() / 100.0F;
+    if (!pressureSensor) {
+        return 1013.25f; // Standard atmospheric pressure at sea level
+    }
+    
+    float value = pressureSensor->readPressure() / 100.0F; // Convert Pa to hPa
     String message = "Pressure: " + String(value) + " hPa";
     Logger::debug(message.c_str());
     return value;
@@ -164,13 +184,17 @@ void SensorManager::resetCalibrationFlag() {
 }
 
 bool SensorManager::isDataAvailable() {
-    bool dataAvailable = scd30.dataAvailable();
+    if (!co2Sensor) {
+        return false;
+    }
+    
+    bool dataAvailable = co2Sensor->dataAvailable();
     
     // Log the data availability status
     if (dataAvailable) {
-        Logger::debug("SCD30 data is available");
+        Logger::debug("CO2 sensor data is available");
     } else {
-        Logger::debug("SCD30 data is not available yet");
+        Logger::debug("CO2 sensor data is not available yet");
     }
     
     return dataAvailable;
