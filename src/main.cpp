@@ -17,6 +17,28 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 Adafruit_BMP280 bmp;
 SCD30 scd30;
 
+// CO2 thresholds
+const int CO2_LEVEL_1 = 1000;  // Normal level threshold
+const int CO2_LEVEL_2 = 2000;  // Moderate warning threshold
+
+// Timing variables
+unsigned long lastWarningTime = 0;
+
+// Cached readings
+float lastCO2 = 0;
+float lastTemperatureSCD = 0;
+float lastTemperatureBMP = 0;
+float lastHumidity = 0;
+float lastPressure = 0;
+
+// Function prototypes
+void displayCriticalWarning(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+void displayModerateWarning(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+void displayNormal(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+void displayReadings(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+
+bool warningVisible = true; // Flag to toggle warning visibility
+
 void setup() {
   Serial.begin(115200);
   while (!Serial); // Wait for Serial Monitor to open
@@ -41,6 +63,9 @@ void setup() {
     for (;;);  // Don't proceed, loop forever
   }
 
+  // Display initial readings (default values)
+  displayNormal(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
+
   Serial.println("Initialization complete");
 }
 
@@ -51,69 +76,155 @@ void loop() {
 
   // Read data from SCD30
   if (scd30.dataAvailable()) {
-    float co2 = scd30.getCO2();
-    float temperatureSCD = scd30.getTemperature();
-    float humidity = scd30.getHumidity();
+    lastCO2 = scd30.getCO2();
+    lastTemperatureSCD = scd30.getTemperature();
+    lastHumidity = scd30.getHumidity();
+    lastTemperatureBMP = temperatureBMP;
+    lastPressure = pressure;
 
-    // Clear the display
-    display.clearDisplay();
-
-    // Center the title
-    display.setTextSize(1);
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor((SCREEN_WIDTH - 72) / 2, 0); // Center "CO2 Meter"
-    display.println("CO2 Meter");
-
-    // Helper function to align values
-    auto printAligned = [&](const char *label, float value, const char *unit, int row, int offset = 0) {
-      char valueBuffer[8];
-      snprintf(valueBuffer, sizeof(valueBuffer), "%.2f", value); // Format value with 2 decimals
-
-      // Calculate the width of the label
-      int16_t x1, y1;
-      uint16_t labelWidth, textHeight;
-      display.getTextBounds(label, 0, 0, &x1, &y1, &labelWidth, &textHeight);
-
-      // Calculate the width of the value and unit
-      char fullValue[16];
-      snprintf(fullValue, sizeof(fullValue), "%s %s", valueBuffer, unit);
-      uint16_t valueWidth;
-      display.getTextBounds(fullValue, 0, 0, &x1, &y1, &valueWidth, &textHeight);
-
-      // Print label on the left
-      display.setCursor(0, row);
-      display.print(label);
-
-      // Print value and unit aligned to the right of the label with an offset
-      display.setCursor(SCREEN_WIDTH - valueWidth - offset - 12, row); // Shift 2 characters (12 pixels) to the left
-      display.print(fullValue);
-    };
-
-    // Display CO2
-    printAligned("CO2:", co2, "ppm", 16);
-
-    // Display Temperature (SCD30)
-    printAligned("T (SCD30):", temperatureSCD, "C", 26, 12);
-
-    // Display Temperature (BMP280)
-    printAligned("T (BMP280):", temperatureBMP, "C", 36, 12);
-
-    // Display Humidity
-    printAligned("Humidity:", humidity, "%", 46, 12);
-
-    // Display Pressure
-    printAligned("Pressure:", pressure, "hPa", 56);
-
-    // Update the display
-    display.display();
+    // Check CO2 levels and display warnings if necessary
+    if (lastCO2 > CO2_LEVEL_2) {
+      // Level 3: Critical Warning
+      displayCriticalWarning(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
+    } else if (lastCO2 > CO2_LEVEL_1) {
+      // Level 2: Moderate Warning
+      displayModerateWarning(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
+    } else {
+      // Normal operation
+      displayNormal(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
+    }
 
     // Print to Serial Monitor
-    Serial.printf("CO2: %.2f ppm\n", co2);
-    Serial.printf("T (SCD30): %.2f C\n", temperatureSCD);
-    Serial.printf("T (BMP280): %.2f C\n", temperatureBMP);
-    Serial.printf("Humidity: %.2f %%\n", humidity);
-    Serial.printf("Pressure: %.2f hPa\n\n", pressure);
+    Serial.printf("CO2: %.2f ppm\n", lastCO2);
+    Serial.printf("T (SCD30): %.2f C\n", lastTemperatureSCD);
+    Serial.printf("T (BMP280): %.2f C\n", lastTemperatureBMP);
+    Serial.printf("Humidity: %.2f %%\n", lastHumidity);
+    Serial.printf("Pressure: %.2f hPa\n\n", lastPressure);
+  } else {
+    // Use cached readings if no new data is available
+    displayNormal(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
   }
 
-  delay(2000); // Wait 2 seconds before the next reading
+  delay(1000); // Wait 1 second before the next reading
+}
+
+void displayCriticalWarning(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure) {
+  // Clear the top line for the warning message
+  display.fillRect(0, 0, SCREEN_WIDTH, 16, SSD1306_BLACK); // Clear the top space
+  display.setTextColor(SSD1306_WHITE); // White text on black background
+  display.setTextSize(1);
+
+  // Center the warning text horizontally and vertically
+  int16_t x1, y1;
+  uint16_t textWidth, textHeight;
+  const char *warningMessage = "CRITICAL!";
+  display.getTextBounds(warningMessage, 0, 0, &x1, &y1, &textWidth, &textHeight);
+  int x = (SCREEN_WIDTH - textWidth) / 2;
+  int y = (16 - textHeight) / 2; // Center vertically in the top 16 pixels
+  display.setCursor(x, y);
+  display.print(warningMessage);
+
+  // Update the display
+  display.display();
+
+  // Display the readings in the body section
+  displayReadings(co2, temperatureSCD, temperatureBMP, humidity, pressure);
+}
+
+void displayModerateWarning(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure) {
+  // Clear the top line for the warning message
+  display.fillRect(0, 0, SCREEN_WIDTH, 16, SSD1306_BLACK); // Clear the top space
+  display.setTextColor(SSD1306_WHITE); // White text on black background
+  display.setTextSize(1);
+
+  const char *warningMessage = "MODERATE!";
+  int16_t x1, y1;
+  uint16_t textWidth, textHeight;
+  display.getTextBounds(warningMessage, 0, 0, &x1, &y1, &textWidth, &textHeight);
+  int x = (SCREEN_WIDTH - textWidth) / 2;
+  int y = (16 - textHeight) / 2;
+  display.setCursor(x, y);
+  display.print(warningMessage);
+
+  // Update the display
+  display.display();
+
+  // Display the readings in the body section
+  displayReadings(co2, temperatureSCD, temperatureBMP, humidity, pressure);
+}
+
+void displayNormal(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure) {
+  Serial.println("### Entered displayNormal"); // Debugging statement
+  Serial.printf("CO2: %.2f, T (SCD30): %.2f, T (BMP280): %.2f, Humidity: %.2f, Pressure: %.2f\n",
+                co2, temperatureSCD, temperatureBMP, humidity, pressure);
+
+  // Clear the top line for the headline
+  display.fillRect(0, 0, SCREEN_WIDTH, 16, SSD1306_BLACK); // Clear the top space
+  display.setTextColor(SSD1306_WHITE); // White text on black background
+  display.setTextSize(1);
+
+  // Display the centered headline
+  const char *headline = "CO2 Monitor";
+  int16_t x1, y1;
+  uint16_t textWidth, textHeight;
+  display.getTextBounds(headline, 0, 0, &x1, &y1, &textWidth, &textHeight);
+  int x = (SCREEN_WIDTH - textWidth) / 2; // Center horizontally
+  int y = (16 - textHeight) / 2; // Center vertically in the top 16 pixels
+  display.setCursor(x, y);
+  display.print(headline);
+
+  // Update the display
+  display.display();
+
+  // Display the readings in the body section
+  displayReadings(co2, temperatureSCD, temperatureBMP, humidity, pressure);
+}
+
+void displayReadings(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure) {
+  // Clear the body section (below the headline or warning)
+  display.fillRect(0, 16, SCREEN_WIDTH, SCREEN_HEIGHT - 16, SSD1306_BLACK);
+
+  // Helper function to align values
+  auto printAligned = [&](const char *label, float value, const char *unit, int row) {
+    char valueBuffer[8];
+    snprintf(valueBuffer, sizeof(valueBuffer), "%.2f", value); // Format value with 2 decimals
+
+    // Calculate the width of the value and unit
+    char fullValue[16];
+    snprintf(fullValue, sizeof(fullValue), "%s %s", valueBuffer, unit);
+    int16_t x1, y1;
+    uint16_t fullValueWidth, textHeight;
+    display.getTextBounds(fullValue, 0, 0, &x1, &y1, &fullValueWidth, &textHeight);
+
+    // Print label on the left
+    display.setCursor(0, row);
+    display.print(label);
+
+    // Print value and unit aligned to the right edge
+    display.setCursor(SCREEN_WIDTH - fullValueWidth, row);
+    display.print(fullValue);
+  };
+
+  // Adjust rows to fit measurements at the bottom
+  int baseRow = 16; // Start below the headline or warning
+  int rowSpacing = 10; // Adjust spacing to avoid overlap
+
+  // Display CO2
+  printAligned("CO2:", co2, "ppm", baseRow);
+
+  // Display Temperature (SCD30)
+  printAligned("T (SCD30):", temperatureSCD, "C", baseRow + rowSpacing);
+
+  // Display Temperature (BMP280)
+  printAligned("T (BMP280):", temperatureBMP, "C", baseRow + 2 * rowSpacing);
+
+  // Display Humidity
+  printAligned("Humidity:", humidity, "%", baseRow + 3 * rowSpacing);
+
+  // Display Pressure
+  printAligned("Pressure:", pressure, "hPa", baseRow + 4 * rowSpacing);
+
+  // Update the display
+  display.display();
+  Serial.println("### Display updated"); // Debugging statement
 }
