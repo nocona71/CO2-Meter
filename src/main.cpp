@@ -5,6 +5,9 @@
 #include <SparkFun_SCD30_Arduino_Library.h>
 #include <EEPROM.h> // Include EEPROM library
 #include "config.h" // Include the configuration file
+#include "DisplayManager.h"
+#include "SensorManager.h"
+#include "Logger.h"
 
 // Create an instance of the display
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
@@ -26,85 +29,44 @@ void calibrateSCD30();
 void checkAndCalibrateSCD30();
 void centerHeadline(const char* text);
 
+DisplayManager displayManager;
+SensorManager sensorManager;
+
 void setup() {
-  Serial.begin(115200);
-  while (!Serial); // Wait for Serial Monitor to open
-  Serial.println("Initializing sensors...");
+    Serial.begin(115200);
+    while (!Serial);
 
-  // Initialize EEPROM
-  EEPROM.begin(512); // Initialize EEPROM with 512 bytes of storage
+    Logger::log(Logger::INFO, "Initializing...");
 
-  // Initialize the display
-  if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
-    Serial.println("SSD1306 allocation failed");
-    for (;;);  // Don't proceed, loop forever
-  }
-  display.clearDisplay();
+    if (!displayManager.initialize()) {
+        Logger::log(Logger::ERROR, "Display initialization failed!");
+        for (;;);
+    }
 
-  // Display initialization message
-  display.setTextSize(1);
-  display.setTextColor(SSD1306_WHITE);
-  display.setCursor(0, 0);
-  display.println("Initializing...");
-  display.println("Please wait.");
-  display.display();
+    displayManager.showHeadline("Initializing...");
+    delay(2000);
 
-  // Initialize BMP280
-  if (!bmp.begin(0x76)) { // Default I2C address for BMP280
-    Serial.println("BMP280 initialization failed");
-    display.clearDisplay();
-    display.setCursor(0, 0);
-    display.println("BMP280 failed!");
-    display.display();
-    for (;;);  // Don't proceed, loop forever
-  }
+    if (!sensorManager.initializeSensors()) {
+        displayManager.showHeadline("Sensor init failed!");
+        Logger::log(Logger::ERROR, "Sensor initialization failed!");
+        for (;;);
+    }
 
-  // Initialize SCD30
-  if (!scd30.begin()) {
-    Serial.println("SCD30 initialization failed");
-    display.clearDisplay();
-    display.setCursor(0, 0);
-    display.println("SCD30 failed!");
-    display.display();
-    for (;;);  // Don't proceed, loop forever
-  }
-
-  // Check and calibrate SCD30 if necessary
-  checkAndCalibrateSCD30();
-
-  // Display initial readings (default values)
-  displayReadings(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
-
-  Serial.println("Initialization complete");
+    sensorManager.checkAndCalibrate(displayManager);
+    Logger::log(Logger::INFO, "Initialization complete.");
 }
 
 void loop() {
-  // Read pressure from BMP280
-  float pressure = bmp.readPressure() / 100.0F; // Convert to hPa
+    float co2 = sensorManager.getCO2();
+    float temperatureSCD = sensorManager.getTemperatureSCD();
+    float temperatureBMP = sensorManager.getTemperatureBMP();
+    float humidity = sensorManager.getHumidity();
+    float pressure = sensorManager.getPressure();
 
-  // Pass pressure to SCD30 for compensation
-  scd30.setAmbientPressure(pressure);
+    displayManager.showReadings(co2, temperatureSCD, temperatureBMP, humidity, pressure);
 
-  // Check if new data is available from SCD30
-  if (scd30.dataAvailable()) {
-    lastCO2 = scd30.getCO2();
-    lastTemperatureSCD = scd30.getTemperature();
-    lastHumidity = scd30.getHumidity();
-    lastTemperatureBMP = bmp.readTemperature();
-    lastPressure = pressure;
-
-    // Display the readings
-    displayReadings(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
-
-    // Print to Serial Monitor
-    Serial.printf("CO2: %.2f ppm\n", lastCO2);
-    Serial.printf("T (SCD30): %.2f C\n", lastTemperatureSCD);
-    Serial.printf("T (BMP280): %.2f C\n", lastTemperatureBMP);
-    Serial.printf("Humidity: %.2f %%\n", lastHumidity);
-    Serial.printf("Pressure: %.2f hPa\n\n", lastPressure);
-  }
-
-  delay(2000); // Wait 2 seconds before the next reading
+    Logger::log(Logger::INFO, "Readings updated.");
+    delay(2000);
 }
 
 void checkAndCalibrateSCD30() {
