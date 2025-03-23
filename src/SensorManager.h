@@ -1,43 +1,38 @@
 #ifndef SENSOR_MANAGER_H
 #define SENSOR_MANAGER_H
 
-#include <Adafruit_BMP280.h>
-#include <SparkFun_SCD30_Arduino_Library.h>
-#include "config.h"
+#include "SensorInterface.h"
 #include "Logger.h"
-#include "DisplayManager.h"
+
+class DisplayManager; // Forward declaration
 
 class SensorManager {
 private:
-    Adafruit_BMP280 bmp;
-    SCD30 scd30;
+    CO2SensorInterface* co2Sensor;
+    PressureSensorInterface* pressureSensor;
     
     // Last valid readings
-    float lastValidCO2 = 400.0;         // Start with fresh air assumption
-    float lastValidTempSCD = 20.0;      // Start with room temperature assumption
-    float lastValidHumidity = 50.0;     // Start with average humidity assumption
+    float lastValidCO2 = 400.0f;
+    float lastValidTempSCD = 20.0f;
+    float lastValidHumidity = 50.0f;
 
 public:
-    // Initialize the sensors
+    // Default constructor for testing
+    SensorManager() : co2Sensor(nullptr), pressureSensor(nullptr) {}
+    
+    // Constructor with sensor interfaces
+    SensorManager(CO2SensorInterface* co2, PressureSensorInterface* pressure) 
+        : co2Sensor(co2), pressureSensor(pressure) {}
+    
     bool initializeSensors();
-    
-    // Check if calibration is needed and perform it
     void checkAndCalibrate(DisplayManager& display);
-    
-    // Perform sensor calibration
     void calibrate(DisplayManager& display);
-    
-    // Get sensor readings
     float getCO2();
     float getTemperatureSCD();
     float getHumidity();
     float getTemperatureBMP();
     float getPressure();
-    
-    // Reset calibration flag in EEPROM
     void resetCalibrationFlag();
-
-    // Check if data is available
     bool isDataAvailable();
 };
 

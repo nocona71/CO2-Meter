@@ -13,6 +13,7 @@ private:
 
 public:
     DisplayManager();
+    virtual ~DisplayManager() {} // Add virtual destructor
     
     // Method to set the log level
     void setLogLevel(LogLevel level);
@@ -20,18 +21,18 @@ public:
     // Get current log level
     LogLevel getLogLevel() const;
     
-    // Log methods
-    void log(LogLevel level, const char* message);
-    void logError(const char* message);
-    void logWarning(const char* message);
-    void logInfo(const char* message);
-    void logDebug(const char* message);
+    // Log methods - make them virtual so they can be mocked
+    virtual void log(LogLevel level, const char* message);
+    virtual void logError(const char* message);
+    virtual void logWarning(const char* message);
+    virtual void logInfo(const char* message);
+    virtual void logDebug(const char* message);
     
-    // Display methods
-    bool initialize();
-    void showHeadline(const char* text);
-    void showCalibrationMessage(const char* message1, const char* message2);
-    void showReadings(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+    // Display methods - make them virtual so they can be mocked
+    virtual bool initialize();
+    virtual void showHeadline(const char* text);
+    virtual void showCalibrationMessage(const char* message1, const char* message2);
+    virtual void showReadings(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
 };
 
 #endif // DISPLAY_MANAGER_H
