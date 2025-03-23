@@ -3,6 +3,7 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_BMP280.h>
 #include <SparkFun_SCD30_Arduino_Library.h>
+#include <EEPROM.h> // Include EEPROM library
 
 // Define display width, height, and I2C address
 #define SCREEN_WIDTH 128
@@ -36,13 +37,22 @@ void displayCriticalWarning(float co2, float temperatureSCD, float temperatureBM
 void displayModerateWarning(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
 void displayNormal(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
 void displayReadings(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+void calibrateSCD30();
+void checkFRCStatus();
 
 bool warningVisible = true; // Flag to toggle warning visibility
+
+#define EEPROM_CALIBRATION_FLAG_ADDRESS 0 // Address in EEPROM to store the calibration flag
+#define CALIBRATION_DONE 1                // Value indicating calibration is done
+#define CALIBRATION_NOT_DONE 0            // Value indicating calibration is not done
 
 void setup() {
   Serial.begin(115200);
   while (!Serial); // Wait for Serial Monitor to open
   Serial.println("Initializing sensors...");
+
+  // Initialize EEPROM
+  EEPROM.begin(512); // Initialize EEPROM with 512 bytes of storage
 
   // Initialize the display
   if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
@@ -63,6 +73,9 @@ void setup() {
     for (;;);  // Don't proceed, loop forever
   }
 
+  // Check FRC status and calibrate if necessary
+  checkFRCStatus();
+
   // Display initial readings (default values)
   displayNormal(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
 
@@ -70,16 +83,18 @@ void setup() {
 }
 
 void loop() {
-  // Read data from BMP280
-  float temperatureBMP = bmp.readTemperature();
+  // Read pressure from BMP280
   float pressure = bmp.readPressure() / 100.0F; // Convert to hPa
 
-  // Read data from SCD30
+  // Pass pressure to SCD30 for compensation
+  scd30.setAmbientPressure(pressure);
+
+  // Check if new data is available from SCD30
   if (scd30.dataAvailable()) {
     lastCO2 = scd30.getCO2();
     lastTemperatureSCD = scd30.getTemperature();
     lastHumidity = scd30.getHumidity();
-    lastTemperatureBMP = temperatureBMP;
+    lastTemperatureBMP = bmp.readTemperature();
     lastPressure = pressure;
 
     // Check CO2 levels and display warnings if necessary
@@ -105,7 +120,7 @@ void loop() {
     displayNormal(lastCO2, lastTemperatureSCD, lastTemperatureBMP, lastHumidity, lastPressure);
   }
 
-  delay(1000); // Wait 1 second before the next reading
+  delay(2000); // Wait 2 seconds before the next reading
 }
 
 void displayCriticalWarning(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure) {
@@ -227,4 +242,99 @@ void displayReadings(float co2, float temperatureSCD, float temperatureBMP, floa
   // Update the display
   display.display();
   Serial.println("### Display updated"); // Debugging statement
+}
+
+void calibrateSCD30() {
+  // Clear the display and inform the user
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(0, 0);
+  display.println("Calibrating SCD30...");
+  display.println("Place sensor in fresh air.");
+  display.println("Do not breathe near it.");
+  display.display();
+
+  Serial.println("Calibrating SCD30...");
+  Serial.println("Place the sensor in fresh air and do not breathe near it.");
+
+  // Show a progress bar for 10 seconds
+  int calibrationDuration = 10000; // 10 seconds
+  int progressBarWidth = SCREEN_WIDTH - 4; // Leave 2-pixel padding on each side
+  int progressBarHeight = 10; // Height of the progress bar
+  int progressBarX = 2; // X position (2-pixel padding)
+  int progressBarY = SCREEN_HEIGHT - 12; // Y position (bottom of the screen)
+
+  for (int i = 0; i <= calibrationDuration; i += 100) {
+    // Draw the progress bar background
+    display.fillRect(progressBarX, progressBarY, progressBarWidth, progressBarHeight, SSD1306_BLACK);
+    display.drawRect(progressBarX, progressBarY, progressBarWidth, progressBarHeight, SSD1306_WHITE);
+
+    // Fill the progress bar based on elapsed time
+    int filledWidth = (i * progressBarWidth) / calibrationDuration;
+    display.fillRect(progressBarX, progressBarY, filledWidth, progressBarHeight, SSD1306_WHITE);
+
+    // Update the display
+    display.display();
+
+    // Wait 100 ms before updating the progress bar
+    delay(100);
+  }
+
+  // Perform Forced Recalibration (FRC) to 400 ppm (fresh air)
+  const uint16_t freshAirCO2 = 400; // CO2 concentration in fresh air
+  if (scd30.setForcedRecalibrationFactor(freshAirCO2)) {
+    // Calibration successful
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.println("Calibration successful!");
+    display.println("Sensor is ready.");
+    display.display();
+
+    Serial.println("Calibration successful! Sensor is ready.");
+  } else {
+    // Calibration failed
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.println("Calibration failed!");
+    display.println("Please try again.");
+    display.display();
+
+    Serial.println("Calibration failed! Please try again.");
+  }
+
+  // Wait for a moment to let the user read the message
+  delay(5000);
+}
+
+void checkFRCStatus() {
+  // Read the calibration flag from EEPROM
+  uint8_t calibrationFlag = EEPROM.read(EEPROM_CALIBRATION_FLAG_ADDRESS);
+
+  if (calibrationFlag == CALIBRATION_DONE) {
+    // Calibration has already been performed
+    Serial.println("Calibration already performed. Skipping...");
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.println("Calibration check...");
+    display.println("Already calibrated.");
+    display.display();
+    delay(3000); // Wait for the user to read the message
+  } else {
+    // Calibration has not been performed
+    Serial.println("Calibration not performed. Starting calibration...");
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.println("Calibration check...");
+    display.println("Calibration needed.");
+    display.display();
+    delay(3000); // Wait for the user to read the message
+
+    // Perform calibration
+    calibrateSCD30();
+
+    // Mark calibration as done in EEPROM
+    EEPROM.write(EEPROM_CALIBRATION_FLAG_ADDRESS, CALIBRATION_DONE);
+    EEPROM.commit(); // Commit changes to EEPROM
+  }
 }
