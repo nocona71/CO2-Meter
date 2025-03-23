@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include <unity.h>
 #include "mocks/MockSCD30.h"
 #include "mocks/MockBMP280.h"
