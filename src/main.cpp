@@ -35,11 +35,29 @@ SensorManager sensorManager;
 void setup() {
     Serial.begin(115200);
     while (!Serial);
+    
+    // Initialize EEPROM
+    EEPROM.begin(512);  // Size depends on your needs, 512 is usually plenty
+    
+    // Set log level to DEBUG
+    Logger::setLogLevel(Logger::DBG);
+    
+    // Print the current log level
+    Serial.print("Current log level: ");
+    Serial.println(Logger::getLogLevel());
+    
+    // Try logging at different levels
+    Logger::debug("DEBUG message");
+    Logger::info("INFO message");
+    Logger::warning("WARNING message");
+    Logger::error("ERROR message");
+    
+    // ...rest of setup...
 
-    Logger::log(Logger::INFO, "Initializing...");
+    Logger::info("Initializing...");
 
     if (!displayManager.initialize()) {
-        Logger::log(Logger::ERROR, "Display initialization failed!");
+        // No need to log here, DisplayManager already logs errors
         for (;;);
     }
 
@@ -48,25 +66,30 @@ void setup() {
 
     if (!sensorManager.initializeSensors()) {
         displayManager.showHeadline("Sensor init failed!");
-        Logger::log(Logger::ERROR, "Sensor initialization failed!");
+        displayManager.logError("Sensor initialization failed!");
         for (;;);
     }
 
     sensorManager.checkAndCalibrate(displayManager);
-    Logger::log(Logger::INFO, "Initialization complete.");
+    displayManager.logInfo("Initialization complete.");
 }
 
 void loop() {
-    float co2 = sensorManager.getCO2();
-    float temperatureSCD = sensorManager.getTemperatureSCD();
-    float temperatureBMP = sensorManager.getTemperatureBMP();
-    float humidity = sensorManager.getHumidity();
-    float pressure = sensorManager.getPressure();
-
-    displayManager.showReadings(co2, temperatureSCD, temperatureBMP, humidity, pressure);
-
-    Logger::log(Logger::INFO, "Readings updated.");
-    delay(2000);
+    // Only get new readings if data is available
+    if (sensorManager.isDataAvailable()) {
+        float co2 = sensorManager.getCO2();
+        float temperatureSCD = sensorManager.getTemperatureSCD();
+        float humidity = sensorManager.getHumidity();
+        
+        // These readings are from a different sensor
+        float temperatureBMP = sensorManager.getTemperatureBMP();
+        float pressure = sensorManager.getPressure();
+        
+        displayManager.showReadings(co2, temperatureSCD, temperatureBMP, humidity, pressure);
+        Logger::info("Readings updated.");
+    }
+    
+    delay(2000); // Still delay to avoid too frequent checks
 }
 
 void checkAndCalibrateSCD30() {
