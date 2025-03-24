@@ -20,7 +20,7 @@ bool DisplayManager::initialize() {
 void DisplayManager::showCalibrationMessage(const char* message1, const char* message2) {
     display.clearDisplay();
     display.setCursor(0, 0);
-    display.setTextSize(1);
+    display.setTextSize(FONT_SIZE_SMALL); // Use the constant for small font size
     display.setTextColor(SSD1306_WHITE);
     display.println(message1);
     display.println(message2);
@@ -40,7 +40,7 @@ void DisplayManager::showBlinkingWarning(const char* line1, const char* line2, c
 
     if (isWarningActive) {
         // Display the warning with the largest font
-        display.setTextSize(2); // Use the largest font size
+        display.setTextSize(FONT_SIZE_LARGE); // Use the constant for large font size
         display.setTextColor(SSD1306_WHITE);
         display.setCursor(0, 0);
         display.println("WARNING!");
@@ -60,14 +60,14 @@ void DisplayManager::showBlinkingWarning(const char* line1, const char* line2, c
 }
 
 void DisplayManager::showHeadline(const char* text) {
-    display.clearDisplay();
+    // display.clearDisplay();
     display.setTextSize(2);
+    display.setTextColor(SSD1306_WHITE, SSD1306_BLACK);
     int16_t x1, y1;
     uint16_t textWidth, textHeight;
     display.getTextBounds(text, 0, 0, &x1, &y1, &textWidth, &textHeight);
     int16_t x = (SCREEN_WIDTH - textWidth) / 2;
     display.setCursor(x, 0);
-    display.setTextColor(SSD1306_WHITE);
     display.println(text);
     display.display();
 }
@@ -82,7 +82,7 @@ void DisplayManager::showNormalScreen(float co2, float temperatureSCD, float tem
 
 void DisplayManager::displayReadings(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure) {
     Logger::debug("Updating display with sensor readings...");
-    display.setTextSize(1); // Small font size for readings
+    display.setTextSize(FONT_SIZE_SMALL); // Small font size for readings
 
     // Use a lambda function to print aligned text without clearing the entire area
     auto printAligned = [&](const char* label, float value, const char* unit, int row) {
@@ -106,7 +106,7 @@ void DisplayManager::displayReadings(float co2, float temperatureSCD, float temp
         display.print(fullValue);
     };
 
-    int baseRow = 16; // Start below the headline
+    int baseRow = 17; // Start below the headline
     int rowSpacing = 10;
 
     // Update only the readings area without clearing it
@@ -135,16 +135,13 @@ void DisplayManager::runDisplayCheck() {
     display.display();
 
     delay(5000); // Keep the test visible for 5 seconds
-    display.clearDisplay();
-    display.display();
-
     Logger::info("Display check complete.");
 }
 
 void DisplayManager::splashScreen(const char* text) {
     display.clearDisplay();
-    display.setTextSize(1); // Small font size
-    display.setTextColor(SSD1306_WHITE);
+    display.setTextSize(FONT_SIZE_SMALL); // Use the constant for large font size
+    display.setTextColor(SSD1306_WHITE, SSD1306_BLACK);
 
     // Center the text on the screen
     int16_t x1, y1;
