@@ -4,6 +4,8 @@
 #include "SensorInterface.h"
 #include "Logger.h"
 #include <SparkFun_SCD30_Arduino_Library.h>
+#include <Adafruit_BMP280.h>
+#include <Wire.h>
 
 class DisplayManager; // Forward declaration
 
@@ -12,6 +14,7 @@ private:
     CO2SensorInterface* co2Sensor;
     PressureSensorInterface* pressureSensor;
     SCD30 scd30; // Declare the SCD30 object
+    Adafruit_BMP280 bmp280; // Declare bmp280 object
     
     // Last valid readings
     float lastValidCO2 = 400.0f;
@@ -36,6 +39,11 @@ public:
     float getPressure();
     void resetCalibrationFlag();
     bool isDataAvailable();
+    void calibrateSCD30();
+    void checkAndCalibrateSCD30();
+
+    // New method for running the I2C scanner
+    void runI2CScanner();
 };
 
 #endif // SENSOR_MANAGER_H
