@@ -1,0 +1,3 @@
+<map id="DisplayManager" name="DisplayManager">
+<area shape="rect" id="Node000001" title="Manages the OLED display for showing messages, warnings, and sensor readings." alt="" coords="5,5,183,203"/>
+</map>

@@ -1,0 +1,23 @@
+\doxysection{Mock\+BMP280.\+h}
+\hypertarget{_mock_b_m_p280_8h_source}{}\label{_mock_b_m_p280_8h_source}\index{test/mocks/MockBMP280.h@{test/mocks/MockBMP280.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ MOCK\_BMP280\_H}}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ MOCK\_BMP280\_H}}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00004}\mbox{\hyperlink{class_mock_b_m_p280}{00004}}\ \textcolor{keyword}{class\ }MockBMP280\ \{}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00005}00005\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00006}00006\ \ \ \ \ \textcolor{keywordtype}{bool}\ beginCalled;}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00007}00007\ \ \ \ \ \textcolor{keywordtype}{float}\ temperatureValue;}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00008}00008\ \ \ \ \ \textcolor{keywordtype}{float}\ pressureValue;}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00010}00010\ \ \ \ \ MockBMP280();\ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{bool}\ begin(uint8\_t\ addr\ =\ 0x76);}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{float}\ readTemperature();}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{float}\ readPressure();}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00015}00015\ \};}
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_mock_b_m_p280_8h_source_l00017}00017\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MOCK\_BMP280\_H}}
+
+\end{DoxyCode}

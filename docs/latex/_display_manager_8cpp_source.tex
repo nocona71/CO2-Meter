@@ -1,0 +1,160 @@
+\doxysection{Display\+Manager.\+cpp}
+\hypertarget{_display_manager_8cpp_source}{}\label{_display_manager_8cpp_source}\index{src/DisplayManager.cpp@{src/DisplayManager.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}DisplayManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <Adafruit\_GFX.h>}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <Adafruit\_SSD1306.h>}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <Wire.h>}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00010}\mbox{\hyperlink{class_display_manager_aaa4cbf192d2e50fde0064472243558e9}{00010}}\ \mbox{\hyperlink{class_display_manager_aaa4cbf192d2e50fde0064472243558e9}{DisplayManager::DisplayManager}}()}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00011}00011\ \ \ \ \ :\ display(SCREEN\_WIDTH,\ SCREEN\_HEIGHT,\ \&Wire,\ OLED\_RESET)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00018}\mbox{\hyperlink{class_display_manager_aeb1c8224403ea2595f202e5d93380609}{00018}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_display_manager_aeb1c8224403ea2595f202e5d93380609}{DisplayManager::initialize}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (!display.begin(SSD1306\_SWITCHCAPVCC,\ SCREEN\_ADDRESS))\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger_ac862952b8ffa9de295a496af0108785c}{Logger::error}}(\textcolor{stringliteral}{"{}Display\ initialization\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00023}00023\ \ \ \ \ display.clearDisplay();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{class_logger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}Display\ initialized\ successfully"{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00034}\mbox{\hyperlink{class_display_manager_aa42d0e454d4e07136ca3f1ebaa0aadbd}{00034}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_display_manager_aa42d0e454d4e07136ca3f1ebaa0aadbd}{DisplayManager::showCalibrationMessage}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message2)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00035}00035\ \ \ \ \ display.clearDisplay();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00036}00036\ \ \ \ \ display.setCursor(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00037}00037\ \ \ \ \ display.setTextSize(FONT\_SIZE\_SMALL);\ \textcolor{comment}{//\ Use\ the\ constant\ for\ small\ font\ size}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00038}00038\ \ \ \ \ display.setTextColor(SSD1306\_WHITE);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00039}00039\ \ \ \ \ display.println(message1);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00040}00040\ \ \ \ \ display.println(message2);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00041}00041\ \ \ \ \ display.display();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00057}\mbox{\hyperlink{class_display_manager_af8a5a8ee843f0ccc7bf50dc94ff2d529}{00057}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_display_manager_af8a5a8ee843f0ccc7bf50dc94ff2d529}{DisplayManager::showBlinkingWarning}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ line1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ line2,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ line3,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ line4,\ \textcolor{keywordtype}{float}\ co2,\ \textcolor{keywordtype}{float}\ temperatureSCD,\ \textcolor{keywordtype}{float}\ temperatureBMP,\ \textcolor{keywordtype}{float}\ humidity,\ \textcolor{keywordtype}{float}\ pressure)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ currentTime\ =\ millis();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ it's\ time\ to\ toggle\ the\ warning\ display}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentTime\ -\/\ lastBlinkTime\ >=\ blinkInterval)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ lastBlinkTime\ =\ currentTime;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ isWarningActive\ =\ !isWarningActive;\ \textcolor{comment}{//\ Toggle\ the\ warning\ state}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00066}00066\ \ \ \ \ display.clearDisplay();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (isWarningActive)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Display\ the\ warning\ with\ the\ largest\ font}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ display.setTextSize(FONT\_SIZE\_LARGE);\ \textcolor{comment}{//\ Use\ the\ constant\ for\ large\ font\ size}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ display.setTextColor(SSD1306\_WHITE);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ display.setCursor(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ display.println(\textcolor{stringliteral}{"{}WARNING!"{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Display\ the\ 4\ lines\ of\ the\ warning\ message}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ display.setCursor(0,\ 16);\ \textcolor{comment}{//\ Move\ cursor\ below\ "{}WARNING!"{}}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ display.println(line1);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ display.println(line2);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ display.println(line3);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ display.println(line4);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00081}00081\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ the\ reusable\ method\ to\ display\ the\ normal\ screen}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_display_manager_a430456b5a894ff7d63b62324007cb3ce}{showNormalScreen}}(co2,\ temperatureSCD,\ temperatureBMP,\ humidity,\ pressure);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00086}00086\ \ \ \ \ display.display();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00094}00094\ \textcolor{keywordtype}{void}\ DisplayManager::showHeadline(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ text)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00095}00095\ \ \ \ \ display.setTextSize(2);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00096}00096\ \ \ \ \ display.setTextColor(SSD1306\_WHITE,\ SSD1306\_BLACK);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00097}00097\ \ \ \ \ int16\_t\ x1,\ y1;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00098}00098\ \ \ \ \ uint16\_t\ textWidth,\ textHeight;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00099}00099\ \ \ \ \ display.getTextBounds(text,\ 0,\ 0,\ \&x1,\ \&y1,\ \&textWidth,\ \&textHeight);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00100}00100\ \ \ \ \ int16\_t\ x\ =\ (SCREEN\_WIDTH\ -\/\ textWidth)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00101}00101\ \ \ \ \ display.setCursor(x,\ 0);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00102}00102\ \ \ \ \ display.println(text);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00103}00103\ \ \ \ \ display.display();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00104}00104\ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00115}\mbox{\hyperlink{class_display_manager_a430456b5a894ff7d63b62324007cb3ce}{00115}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_display_manager_a430456b5a894ff7d63b62324007cb3ce}{DisplayManager::showNormalScreen}}(\textcolor{keywordtype}{float}\ co2,\ \textcolor{keywordtype}{float}\ temperatureSCD,\ \textcolor{keywordtype}{float}\ temperatureBMP,\ \textcolor{keywordtype}{float}\ humidity,\ \textcolor{keywordtype}{float}\ pressure)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00116}00116\ \ \ \ \ display.clearDisplay();\ \textcolor{comment}{//\ Clear\ the\ entire\ display}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00118}00118\ \ \ \ \ showHeadline(\textcolor{stringliteral}{"{}CO2\ Meter"{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00119}00119\ \ \ \ \ displayReadings(co2,\ temperatureSCD,\ temperatureBMP,\ humidity,\ pressure);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00131}00131\ \textcolor{keywordtype}{void}\ DisplayManager::displayReadings(\textcolor{keywordtype}{float}\ co2,\ \textcolor{keywordtype}{float}\ temperatureSCD,\ \textcolor{keywordtype}{float}\ temperatureBMP,\ \textcolor{keywordtype}{float}\ humidity,\ \textcolor{keywordtype}{float}\ pressure)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00132}00132\ \ \ \ \ \mbox{\hyperlink{class_logger_abeffd58a6beace1b1c01a5324227fd83}{Logger::debug}}(\textcolor{stringliteral}{"{}Updating\ display\ with\ sensor\ readings..."{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00133}00133\ \ \ \ \ display.setTextSize(FONT\_SIZE\_SMALL);\ \textcolor{comment}{//\ Small\ font\ size\ for\ readings}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Use\ a\ lambda\ function\ to\ print\ aligned\ text\ without\ clearing\ the\ entire\ area}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00136}00136\ \ \ \ \ \textcolor{keyword}{auto}\ printAligned\ =\ [\&](\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ label,\ \textcolor{keywordtype}{float}\ value,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ unit,\ \textcolor{keywordtype}{int}\ row)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ valueBuffer[8];}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ snprintf(valueBuffer,\ \textcolor{keyword}{sizeof}(valueBuffer),\ \textcolor{stringliteral}{"{}\%.2f"{}},\ value);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ fullValue[16];}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ snprintf(fullValue,\ \textcolor{keyword}{sizeof}(fullValue),\ \textcolor{stringliteral}{"{}\%s\ \%s"{}},\ valueBuffer,\ unit);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ width\ of\ the\ full\ value\ text}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ int16\_t\ x1,\ y1;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ uint16\_t\ fullValueWidth,\ textHeight;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ display.getTextBounds(fullValue,\ 0,\ 0,\ \&x1,\ \&y1,\ \&fullValueWidth,\ \&textHeight);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ the\ label\ on\ the\ left}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ display.setCursor(0,\ row);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ display.setTextColor(SSD1306\_WHITE,\ SSD1306\_BLACK);\ \textcolor{comment}{//\ Overwrite\ previous\ text}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ display.print(label);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ the\ value\ on\ the\ right}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ display.setCursor(SCREEN\_WIDTH\ -\/\ fullValueWidth,\ row);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ display.print(fullValue);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00155}00155\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordtype}{int}\ baseRow\ =\ 17;\ \textcolor{comment}{//\ Start\ below\ the\ headline}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{keywordtype}{int}\ rowSpacing\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//\ Update\ only\ the\ readings\ area\ without\ clearing\ it}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00161}00161\ \ \ \ \ printAligned(\textcolor{stringliteral}{"{}CO2:"{}},\ co2,\ \textcolor{stringliteral}{"{}ppm"{}},\ baseRow);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00162}00162\ \ \ \ \ printAligned(\textcolor{stringliteral}{"{}T\ (SCD30):"{}},\ temperatureSCD,\ \textcolor{stringliteral}{"{}C"{}},\ baseRow\ +\ rowSpacing);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00163}00163\ \ \ \ \ printAligned(\textcolor{stringliteral}{"{}T\ (BMP280):"{}},\ temperatureBMP,\ \textcolor{stringliteral}{"{}C"{}},\ baseRow\ +\ 2\ *\ rowSpacing);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00164}00164\ \ \ \ \ printAligned(\textcolor{stringliteral}{"{}Humidity:"{}},\ humidity,\ \textcolor{stringliteral}{"{}\%"{}},\ baseRow\ +\ 3\ *\ rowSpacing);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00165}00165\ \ \ \ \ printAligned(\textcolor{stringliteral}{"{}Pressure:"{}},\ pressure,\ \textcolor{stringliteral}{"{}hPa"{}},\ baseRow\ +\ 4\ *\ rowSpacing);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00167}00167\ \ \ \ \ display.display();\ \textcolor{comment}{//\ Update\ the\ display\ with\ the\ new\ content}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00168}00168\ \ \ \ \ \mbox{\hyperlink{class_logger_abeffd58a6beace1b1c01a5324227fd83}{Logger::debug}}(\textcolor{stringliteral}{"{}Display\ updated."{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00169}00169\ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00174}\mbox{\hyperlink{class_display_manager_a2d6f5efef5cb7e03c820ab14c4adc217}{00174}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_display_manager_a2d6f5efef5cb7e03c820ab14c4adc217}{DisplayManager::runDisplayCheck}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00175}00175\ \ \ \ \ \mbox{\hyperlink{class_logger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}Running\ display\ check..."{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00177}00177\ \ \ \ \ display.clearDisplay();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00178}00178\ \ \ \ \ display.setTextSize(1);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00179}00179\ \ \ \ \ display.setTextColor(SSD1306\_WHITE);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00180}00180\ \ \ \ \ display.setCursor(0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00181}00181\ \ \ \ \ display.println(\textcolor{stringliteral}{"{}Display\ Test"{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00182}00182\ \ \ \ \ display.setCursor(0,\ 10);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00183}00183\ \ \ \ \ display.println(\textcolor{stringliteral}{"{}Line\ 2:\ Hello!"{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00184}00184\ \ \ \ \ display.setCursor(0,\ 20);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00185}00185\ \ \ \ \ display.println(\textcolor{stringliteral}{"{}Line\ 3:\ Testing..."{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00186}00186\ \ \ \ \ display.display();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00188}00188\ \ \ \ \ delay(5000);\ \textcolor{comment}{//\ Keep\ the\ test\ visible\ for\ 5\ seconds}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00189}00189\ \ \ \ \ \mbox{\hyperlink{class_logger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}Display\ check\ complete."{}});}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00190}00190\ \}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00197}\mbox{\hyperlink{class_display_manager_af6b3073649e2e7d9f4a8ce768ac51b3d}{00197}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_display_manager_af6b3073649e2e7d9f4a8ce768ac51b3d}{DisplayManager::splashScreen}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ text)\ \{}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00198}00198\ \ \ \ \ display.clearDisplay();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00199}00199\ \ \ \ \ display.setTextSize(FONT\_SIZE\_SMALL);\ \textcolor{comment}{//\ Use\ the\ constant\ for\ large\ font\ size}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00200}00200\ \ \ \ \ display.setTextColor(SSD1306\_WHITE,\ SSD1306\_BLACK);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00202}00202\ \ \ \ \ \textcolor{comment}{//\ Center\ the\ text\ on\ the\ screen}}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00203}00203\ \ \ \ \ int16\_t\ x1,\ y1;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00204}00204\ \ \ \ \ uint16\_t\ textWidth,\ textHeight;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00205}00205\ \ \ \ \ display.getTextBounds(text,\ 0,\ 0,\ \&x1,\ \&y1,\ \&textWidth,\ \&textHeight);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00206}00206\ \ \ \ \ int16\_t\ x\ =\ (SCREEN\_WIDTH\ -\/\ textWidth)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00207}00207\ \ \ \ \ int16\_t\ y\ =\ (SCREEN\_HEIGHT\ -\/\ textHeight)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00209}00209\ \ \ \ \ display.setCursor(x,\ y);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00210}00210\ \ \ \ \ display.println(text);}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00211}00211\ \ \ \ \ display.display();}
+\DoxyCodeLine{\Hypertarget{_display_manager_8cpp_source_l00212}00212\ \}}
+
+\end{DoxyCode}

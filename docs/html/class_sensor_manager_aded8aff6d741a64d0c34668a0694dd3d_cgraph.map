@@ -1,0 +1,10 @@
+<map id="SensorManager::initializeSensors" name="SensorManager::initializeSensors">
+<area shape="rect" id="Node000001" title="Initializes the SCD30 and BMP280 sensors." alt="" coords="5,23,173,65"/>
+<area shape="rect" id="Node000002" href="$class_logger.html#ac862952b8ffa9de295a496af0108785c" title="Logs an error message." alt="" coords="221,5,315,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,29,205,25,206,30,174,35"/>
+<area shape="rect" id="Node000004" href="$class_logger.html#a0c5851d03ba2e560bfd57aeb713267b3" title="Logs an informational message." alt="" coords="223,56,312,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="174,53,208,58,207,64,173,59"/>
+<area shape="rect" id="Node000003" href="$class_logger.html#af0dc4ff68b6d37026b9f6c7a51da6aaa" title="Logs a message if it meets the current log level." alt="" coords="363,31,448,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,25,348,31,347,36,315,30"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="313,58,347,52,348,57,314,64"/>
+</map>

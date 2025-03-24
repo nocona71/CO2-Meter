@@ -1,0 +1,36 @@
+\doxysection{I2\+CScanner.\+cpp}
+\hypertarget{_i2_c_scanner_8cpp_source}{}\label{_i2_c_scanner_8cpp_source}\index{src/I2CScanner.cpp@{src/I2CScanner.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i2_c_scanner_8h}{I2CScanner.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00018}\mbox{\hyperlink{class_i2_c_scanner_ad3b7b4bc25e6c1e8b89e702862a56af5}{00018}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i2_c_scanner_ad3b7b4bc25e6c1e8b89e702862a56af5}{I2CScanner::scan}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{class_logger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}Starting\ I2C\ Scanner..."{}});}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{byte}\ error,\ address;}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{int}\ devicesFound\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00023}00023\ \ \ \ \ Wire.begin();}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{for}\ (address\ =\ 1;\ address\ <\ 127;\ address++)\ \{}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ Wire.beginTransmission(address);}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ error\ =\ Wire.endTransmission();}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[40];\ \textcolor{comment}{//\ Buffer\ to\ store\ the\ log\ message}}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}I2C\ device\ found\ at\ address\ 0x\%02X"{}},\ address);}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(buffer);}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ devicesFound++;}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (error\ ==\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[40];\ \textcolor{comment}{//\ Buffer\ to\ store\ the\ log\ message}}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}Unknown\ error\ at\ address\ 0x\%02X"{}},\ address);}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger_a4d229b17ee039e273686455c74382ec6}{Logger::warning}}(buffer);}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (devicesFound\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}No\ I2C\ devices\ found."{}});}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00042}00042\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}I2C\ scan\ complete."{}});}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i2_c_scanner_8cpp_source_l00045}00045\ \}}
+
+\end{DoxyCode}
