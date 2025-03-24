@@ -1,0 +1,107 @@
+\doxysection{include/\+Logger.h File Reference}
+\hypertarget{Logger_8h}{}\label{Logger_8h}\index{include/Logger.h@{include/Logger.h}}
+
+
+Provides logging functionality with different log levels for debugging and monitoring.  
+
+
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+Include dependency graph for Logger.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{Logger_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Logger_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classLogger}{Logger}}
+\begin{DoxyCompactList}\small\item\em A utility class for logging messages at different log levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \{ \newline
+\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}{LOG\+\_\+\+NONE}} = 0
+, \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\+\_\+\+ERROR}} = 1
+, \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\+\_\+\+WARNING}} = 2
+, \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\+\_\+\+INFO}} = 3
+, \newline
+\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\+\_\+\+DEBUG}} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em Defines the different levels of logging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides logging functionality with different log levels for debugging and monitoring. 
+
+
+
+Definition in file \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9} 
+\index{Logger.h@{Logger.h}!LogLevel@{LogLevel}}
+\index{LogLevel@{LogLevel}!Logger.h@{Logger.h}}
+\doxysubsubsection{\texorpdfstring{LogLevel}{LogLevel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}
+
+
+
+Defines the different levels of logging. 
+
+
+\begin{DoxyItemize}
+\item {\ttfamily LOG\+\_\+\+NONE}\+: No logging.
+\item {\ttfamily LOG\+\_\+\+ERROR}\+: Logs only errors.
+\item {\ttfamily LOG\+\_\+\+WARNING}\+: Logs errors and warnings.
+\item {\ttfamily LOG\+\_\+\+INFO}\+: Logs informational messages, warnings, and errors.
+\item {\ttfamily LOG\+\_\+\+DEBUG}\+: Logs all messages, including verbose debug information. 
+\end{DoxyItemize}\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_NONE@{LOG\_NONE}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!LOG\_NONE@{LOG\_NONE}}}\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1} 
+LOG\+\_\+\+NONE&No logging. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_ERROR@{LOG\_ERROR}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!LOG\_ERROR@{LOG\_ERROR}}}\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473} 
+LOG\+\_\+\+ERROR&Only errors. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_WARNING@{LOG\_WARNING}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!LOG\_WARNING@{LOG\_WARNING}}}\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400} 
+LOG\+\_\+\+WARNING&Errors and warnings. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_INFO@{LOG\_INFO}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!LOG\_INFO@{LOG\_INFO}}}\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837} 
+LOG\+\_\+\+INFO&Normal information. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOG\_DEBUG@{LOG\_DEBUG}!Logger.h@{Logger.h}}\index{Logger.h@{Logger.h}!LOG\_DEBUG@{LOG\_DEBUG}}}\Hypertarget{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}\label{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e} 
+LOG\+\_\+\+DEBUG&Verbose debug information. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{Logger_8h_source_l00021}{21}} of file \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}{LOG\_NONE}}\ =\ 0,\ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}}\ =\ 1,\ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\_WARNING}}\ =\ 2,\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\_INFO}}\ =\ 3,\ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\_DEBUG}}\ =\ 4\ \ \ \ }
+\DoxyCodeLine{00027\ \};}
+
+\end{DoxyCode}

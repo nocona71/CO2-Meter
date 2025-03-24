@@ -1,0 +1,121 @@
+\doxysection{I2\+CScanner Class Reference}
+\hypertarget{classI2CScanner}{}\label{classI2CScanner}\index{I2CScanner@{I2CScanner}}
+
+
+A utility class for scanning the I2C bus and logging connected devices.  
+
+
+
+
+{\ttfamily \#include $<$I2\+CScanner.\+h$>$}
+
+
+
+Collaboration diagram for I2\+CScanner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classI2CScanner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classI2CScanner_ad3b7b4bc25e6c1e8b89e702862a56af5}{scan}} ()
+\begin{DoxyCompactList}\small\item\em Scans the I2C bus for connected devices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A utility class for scanning the I2C bus and logging connected devices. 
+
+Definition at line \mbox{\hyperlink{I2CScanner_8h_source_l00016}{16}} of file \mbox{\hyperlink{I2CScanner_8h_source}{I2\+CScanner.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classI2CScanner_ad3b7b4bc25e6c1e8b89e702862a56af5}\label{classI2CScanner_ad3b7b4bc25e6c1e8b89e702862a56af5} 
+\index{I2CScanner@{I2CScanner}!scan@{scan}}
+\index{scan@{scan}!I2CScanner@{I2CScanner}}
+\doxysubsubsection{\texorpdfstring{scan()}{scan()}}
+{\footnotesize\ttfamily void I2\+CScanner\+::scan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Scans the I2C bus for connected devices. 
+
+Scans the I2C bus for connected devices and logs their addresses.
+
+This method iterates through all possible I2C addresses (1 to 127) and checks if a device responds at each address. If a device is found, its address is logged. If no devices are found, a message is logged indicating this.
+
+This method iterates through all possible I2C addresses (1 to 127) and checks if a device responds at each address. If a device is found, its address is logged. If no devices are found, a message is logged indicating this.
+
+
+\begin{DoxyItemize}
+\item The method uses the {\ttfamily Wire} library to communicate with devices on the I2C bus.
+\item For each address, it sends a transmission and checks for a response.
+\item If an error code of {\ttfamily 0} is returned, a device is present at that address.
+\item If an error code of {\ttfamily 4} is returned, an unknown error occurred.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+The method logs the results using the {\ttfamily \doxylink{classLogger}{Logger}} class. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{I2CScanner_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{I2CScanner_8cpp_source}{I2\+CScanner.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classLogger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}Starting\ I2C\ Scanner..."{}});}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{byte}\ error,\ address;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ devicesFound\ =\ 0;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ Wire.begin();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{for}\ (address\ =\ 1;\ address\ <\ 127;\ address++)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Wire.beginTransmission(address);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ error\ =\ Wire.endTransmission();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\ ==\ 0)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[40];\ \textcolor{comment}{//\ Buffer\ to\ store\ the\ log\ message}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}I2C\ device\ found\ at\ address\ 0x\%02X"{}},\ address);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(buffer);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ devicesFound++;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (error\ ==\ 4)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[40];\ \textcolor{comment}{//\ Buffer\ to\ store\ the\ log\ message}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}Unknown\ error\ at\ address\ 0x\%02X"{}},\ address);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogger_a4d229b17ee039e273686455c74382ec6}{Logger::warning}}(buffer);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (devicesFound\ ==\ 0)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}No\ I2C\ devices\ found."{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLogger_a0c5851d03ba2e560bfd57aeb713267b3}{Logger::info}}(\textcolor{stringliteral}{"{}I2C\ scan\ complete."{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classI2CScanner_ad3b7b4bc25e6c1e8b89e702862a56af5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classI2CScanner_ad3b7b4bc25e6c1e8b89e702862a56af5_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{I2CScanner_8h}{I2\+CScanner.\+h}}\item 
+src/I2\+CScanner.\+cpp\end{DoxyCompactItemize}
