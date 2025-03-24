@@ -1,0 +1,5 @@
+<map id="Logger::warning" name="Logger::warning">
+<area shape="rect" id="Node000001" title="Logs a warning message." alt="" coords="5,5,119,32"/>
+<area shape="rect" id="Node000002" href="$class_logger.html#af0dc4ff68b6d37026b9f6c7a51da6aaa" title="Logs a message if it meets the current log level." alt="" coords="167,5,252,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,16,151,16,151,21,119,21"/>
+</map>

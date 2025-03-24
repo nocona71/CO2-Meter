@@ -1,0 +1,10 @@
+<map id="SensorManager::resetCalibrationFlag" name="SensorManager::resetCalibrationFlag">
+<area shape="rect" id="Node000001" title="Resets the calibration flag stored in EEPROM." alt="" coords="5,31,242,57"/>
+<area shape="rect" id="Node000002" href="$class_logger.html#abeffd58a6beace1b1c01a5324227fd83" title="Logs a debug message." alt="" coords="290,5,393,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,28,274,24,274,29,242,33"/>
+<area shape="rect" id="Node000004" href="$class_logger.html#ac862952b8ffa9de295a496af0108785c" title="Logs an error message." alt="" coords="294,56,388,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="242,55,279,59,278,65,242,60"/>
+<area shape="rect" id="Node000003" href="$class_logger.html#af0dc4ff68b6d37026b9f6c7a51da6aaa" title="Logs a message if it meets the current log level." alt="" coords="441,31,526,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,25,426,31,425,36,393,31"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="388,58,425,52,426,57,389,64"/>
+</map>

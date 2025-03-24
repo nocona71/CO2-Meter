@@ -1,0 +1,37 @@
+<map id="src/main.cpp" name="src/main.cpp">
+<area shape="rect" id="Node000001" title="Main entry point for the CO2 Meter application." alt="" coords="534,5,630,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="458,163,517,189"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="539,35,505,53,489,66,478,81,472,97,471,114,478,147,473,148,465,114,467,96,473,79,486,62,502,49,537,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="914,80,1026,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="631,26,900,76,899,82,630,32"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="692,163,832,189"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="631,24,730,44,774,59,791,68,803,78,810,97,807,117,798,136,786,153,782,150,793,133,802,115,804,98,798,82,788,73,772,64,729,49,630,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,163,140,189"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="533,24,468,29,388,39,300,56,215,82,182,98,151,117,100,154,97,150,148,112,180,93,213,78,299,51,387,33,468,23,533,19"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="163,155,342,197"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="533,23,454,27,362,37,280,54,249,67,229,82,223,95,222,109,233,141,228,142,217,110,218,93,225,78,247,62,278,49,361,32,454,22,533,18"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="1050,80,1140,107"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="631,23,805,43,1035,77,1034,82,804,49,630,28"/>
+<area shape="rect" id="Node000008" href="$config_8h_source.html" title=" " alt="" coords="366,163,433,189"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="547,35,505,54,465,82,436,115,414,150,410,147,431,112,461,78,503,50,545,30"/>
+<area shape="rect" id="Node000009" href="$_display_manager_8h_source.html" title=" " alt="" coords="663,80,789,107"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="608,30,688,70,686,75,606,35"/>
+<area shape="rect" id="Node000010" href="$_logger_8h.html" title="Provides logging functionality with different log levels for debugging and monitoring." alt="" coords="590,163,662,189"/>
+<area shape="poly" id="edge18_Node000001_Node000010" title=" " alt="" coords="588,32,603,79,622,147,616,148,598,81,583,33"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="713,245,789,272"/>
+<area shape="poly" id="edge19_Node000001_Node000011" title=" " alt="" coords="631,24,741,44,791,59,825,78,848,106,860,135,860,165,847,199,827,223,801,240,798,236,823,219,842,196,855,164,855,136,844,109,821,82,789,64,739,49,630,29"/>
+<area shape="rect" id="Node000012" href="$_sensor_manager_8h.html" title="Manages the initialization, calibration, and data retrieval from sensors." alt="" coords="239,80,362,107"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="534,35,365,78,364,73,533,30"/>
+<area shape="rect" id="Node000013" href="$_i2_c_scanner_8h.html" title="Provides functionality to scan the I2C bus for connected devices." alt="" coords="487,80,588,107"/>
+<area shape="poly" id="edge20_Node000001_Node000013" title=" " alt="" coords="576,34,556,68,551,65,572,31"/>
+<area shape="poly" id="edge9_Node000009_Node000004" title=" " alt="" coords="734,106,753,148,748,150,729,108"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="712,109,654,155,651,151,709,105"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="647,188,720,235,718,239,644,192"/>
+<area shape="poly" id="edge16_Node000012_Node000002" title=" " alt="" coords="333,105,446,152,448,153,446,158,443,157,331,110"/>
+<area shape="poly" id="edge15_Node000012_Node000005" title=" " alt="" coords="266,110,124,160,122,155,264,105"/>
+<area shape="poly" id="edge14_Node000012_Node000006" title=" " alt="" coords="295,109,275,143,270,140,291,106"/>
+<area shape="poly" id="edge17_Node000012_Node000008" title=" " alt="" coords="318,105,374,151,371,155,314,109"/>
+<area shape="poly" id="edge13_Node000012_Node000010" title=" " alt="" coords="352,105,576,160,574,165,351,110"/>
+<area shape="poly" id="edge21_Node000013_Node000002" title=" " alt="" coords="532,109,505,151,501,148,528,106"/>
+<area shape="poly" id="edge22_Node000013_Node000010" title=" " alt="" coords="553,105,603,150,599,154,550,109"/>
+</map>

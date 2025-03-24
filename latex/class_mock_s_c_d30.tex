@@ -1,0 +1,229 @@
+\doxysection{Mock\+SCD30 Class Reference}
+\hypertarget{class_mock_s_c_d30}{}\label{class_mock_s_c_d30}\index{MockSCD30@{MockSCD30}}
+
+
+Collaboration diagram for Mock\+SCD30\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_mock_s_c_d30__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_mock_s_c_d30_ad6dc52cedad0b8b0a8d3d89fcb5895c9}{begin}} ()
+\item 
+bool \mbox{\hyperlink{class_mock_s_c_d30_a3ecd63a5f7d821b7929247d0803d2cc6}{calibrate}} (uint16\+\_\+t fresh\+Air\+CO2)
+\item 
+float \mbox{\hyperlink{class_mock_s_c_d30_ac147765060b4b7e86daeb56e4299f4a9}{get\+CO2}} ()
+\item 
+float \mbox{\hyperlink{class_mock_s_c_d30_a8a04642cd86602ff0d7e9a2d803a2d42}{get\+Humidity}} ()
+\item 
+float \mbox{\hyperlink{class_mock_s_c_d30_ae07fe2b8b5c4bab6610c78a935d8b922}{get\+Temperature}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_mock_s_c_d30_aef9ea681ab379717060dfef0585f4aef}{begin\+Called}}
+\item 
+bool \mbox{\hyperlink{class_mock_s_c_d30_a5a9d0247ba50f9ac32a29e53b3fa2052}{calibration\+Called}}
+\item 
+bool \mbox{\hyperlink{class_mock_s_c_d30_a7b12f1ff232a2ab1ba75e8b3a629631b}{calibration\+Success}}
+\item 
+float \mbox{\hyperlink{class_mock_s_c_d30_a770b447a16a4801cf15a41c9a09f9317}{co2\+Value}}
+\item 
+float \mbox{\hyperlink{class_mock_s_c_d30_a0fda1ab4ac6f8116acddf00933509508}{humidity\+Value}}
+\item 
+float \mbox{\hyperlink{class_mock_s_c_d30_a5d2abd0a9b3d121d16048ce75e3ae41a}{temperature\+Value}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8h_source_l00004}{4}} of file \mbox{\hyperlink{_mock_s_c_d30_8h_source}{Mock\+SCD30.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mock_s_c_d30_ac76bd90d9bbb2e9372bae7cf1f4fb0ce}\index{MockSCD30@{MockSCD30}!MockSCD30@{MockSCD30}}
+\index{MockSCD30@{MockSCD30}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{MockSCD30()}{MockSCD30()}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_ac76bd90d9bbb2e9372bae7cf1f4fb0ce} 
+Mock\+SCD30\+::\+Mock\+SCD30 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{_mock_s_c_d30_8cpp_source}{Mock\+SCD30.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ :\ beginCalled(\textcolor{keyword}{false}),\ co2Value(450.0f),\ temperatureValue(22.5f),\ humidityValue(55.0f),}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ calibrationCalled(\textcolor{keyword}{false}),\ calibrationSuccess(\textcolor{keyword}{true})\ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mock_s_c_d30_ad6dc52cedad0b8b0a8d3d89fcb5895c9}\index{MockSCD30@{MockSCD30}!begin@{begin}}
+\index{begin@{begin}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_ad6dc52cedad0b8b0a8d3d89fcb5895c9} 
+bool Mock\+SCD30\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{_mock_s_c_d30_8cpp_source}{Mock\+SCD30.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00010\ \ \ \ \ beginCalled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Simulate\ successful\ initialization}}
+\DoxyCodeLine{00012\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_mock_s_c_d30_ac147765060b4b7e86daeb56e4299f4a9}\index{MockSCD30@{MockSCD30}!getCO2@{getCO2}}
+\index{getCO2@{getCO2}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{getCO2()}{getCO2()}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_ac147765060b4b7e86daeb56e4299f4a9} 
+float Mock\+SCD30\+::get\+CO2 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_mock_s_c_d30_8cpp_source}{Mock\+SCD30.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{return}\ co2Value;}
+\DoxyCodeLine{00017\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_mock_s_c_d30_ae07fe2b8b5c4bab6610c78a935d8b922}\index{MockSCD30@{MockSCD30}!getTemperature@{getTemperature}}
+\index{getTemperature@{getTemperature}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{getTemperature()}{getTemperature()}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_ae07fe2b8b5c4bab6610c78a935d8b922} 
+float Mock\+SCD30\+::get\+Temperature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_mock_s_c_d30_8cpp_source}{Mock\+SCD30.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{return}\ temperatureValue;}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_mock_s_c_d30_a8a04642cd86602ff0d7e9a2d803a2d42}\index{MockSCD30@{MockSCD30}!getHumidity@{getHumidity}}
+\index{getHumidity@{getHumidity}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{getHumidity()}{getHumidity()}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_a8a04642cd86602ff0d7e9a2d803a2d42} 
+float Mock\+SCD30\+::get\+Humidity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_mock_s_c_d30_8cpp_source}{Mock\+SCD30.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{return}\ humidityValue;}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_mock_s_c_d30_a3ecd63a5f7d821b7929247d0803d2cc6}\index{MockSCD30@{MockSCD30}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{calibrate()}{calibrate()}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_a3ecd63a5f7d821b7929247d0803d2cc6} 
+bool Mock\+SCD30\+::calibrate (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{fresh\+Air\+CO2}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{_mock_s_c_d30_8cpp_source}{Mock\+SCD30.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ calibrationCalled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (calibrationSuccess)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ co2Value\ =\ freshAirCO2;\ \textcolor{comment}{//\ Simulate\ successful\ calibration}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Simulate\ calibration\ failure}}
+\DoxyCodeLine{00037\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_mock_s_c_d30_aef9ea681ab379717060dfef0585f4aef}\index{MockSCD30@{MockSCD30}!beginCalled@{beginCalled}}
+\index{beginCalled@{beginCalled}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{beginCalled}{beginCalled}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_aef9ea681ab379717060dfef0585f4aef} 
+bool Mock\+SCD30\+::begin\+Called}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8h_source_l00006}{6}} of file \mbox{\hyperlink{_mock_s_c_d30_8h_source}{Mock\+SCD30.\+h}}.
+
+\Hypertarget{class_mock_s_c_d30_a770b447a16a4801cf15a41c9a09f9317}\index{MockSCD30@{MockSCD30}!co2Value@{co2Value}}
+\index{co2Value@{co2Value}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{co2Value}{co2Value}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_a770b447a16a4801cf15a41c9a09f9317} 
+float Mock\+SCD30\+::co2\+Value}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8h_source_l00007}{7}} of file \mbox{\hyperlink{_mock_s_c_d30_8h_source}{Mock\+SCD30.\+h}}.
+
+\Hypertarget{class_mock_s_c_d30_a5d2abd0a9b3d121d16048ce75e3ae41a}\index{MockSCD30@{MockSCD30}!temperatureValue@{temperatureValue}}
+\index{temperatureValue@{temperatureValue}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{temperatureValue}{temperatureValue}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_a5d2abd0a9b3d121d16048ce75e3ae41a} 
+float Mock\+SCD30\+::temperature\+Value}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8h_source_l00008}{8}} of file \mbox{\hyperlink{_mock_s_c_d30_8h_source}{Mock\+SCD30.\+h}}.
+
+\Hypertarget{class_mock_s_c_d30_a0fda1ab4ac6f8116acddf00933509508}\index{MockSCD30@{MockSCD30}!humidityValue@{humidityValue}}
+\index{humidityValue@{humidityValue}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{humidityValue}{humidityValue}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_a0fda1ab4ac6f8116acddf00933509508} 
+float Mock\+SCD30\+::humidity\+Value}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8h_source_l00009}{9}} of file \mbox{\hyperlink{_mock_s_c_d30_8h_source}{Mock\+SCD30.\+h}}.
+
+\Hypertarget{class_mock_s_c_d30_a5a9d0247ba50f9ac32a29e53b3fa2052}\index{MockSCD30@{MockSCD30}!calibrationCalled@{calibrationCalled}}
+\index{calibrationCalled@{calibrationCalled}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{calibrationCalled}{calibrationCalled}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_a5a9d0247ba50f9ac32a29e53b3fa2052} 
+bool Mock\+SCD30\+::calibration\+Called}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8h_source_l00010}{10}} of file \mbox{\hyperlink{_mock_s_c_d30_8h_source}{Mock\+SCD30.\+h}}.
+
+\Hypertarget{class_mock_s_c_d30_a7b12f1ff232a2ab1ba75e8b3a629631b}\index{MockSCD30@{MockSCD30}!calibrationSuccess@{calibrationSuccess}}
+\index{calibrationSuccess@{calibrationSuccess}!MockSCD30@{MockSCD30}}
+\doxysubsubsection{\texorpdfstring{calibrationSuccess}{calibrationSuccess}}
+{\footnotesize\ttfamily \label{class_mock_s_c_d30_a7b12f1ff232a2ab1ba75e8b3a629631b} 
+bool Mock\+SCD30\+::calibration\+Success}
+
+
+
+Definition at line \mbox{\hyperlink{_mock_s_c_d30_8h_source_l00011}{11}} of file \mbox{\hyperlink{_mock_s_c_d30_8h_source}{Mock\+SCD30.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+test/mocks/Mock\+SCD30.\+h\item 
+test/mocks/Mock\+SCD30.\+cpp\end{DoxyCompactItemize}

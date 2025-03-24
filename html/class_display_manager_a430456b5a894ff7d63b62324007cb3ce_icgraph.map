@@ -1,0 +1,5 @@
+<map id="DisplayManager::showNormalScreen" name="DisplayManager::showNormalScreen">
+<area shape="rect" id="Node000001" title="Displays the normal screen with sensor readings." alt="" coords="254,5,450,48"/>
+<area shape="rect" id="Node000002" href="$class_display_manager.html#af8a5a8ee843f0ccc7bf50dc94ff2d529" title="Displays a blinking warning message on the screen." alt="" coords="5,5,206,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,29,206,29,206,24,238,24"/>
+</map>
