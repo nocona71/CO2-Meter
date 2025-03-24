@@ -10,6 +10,9 @@ class DisplayManager {
 private:
     Adafruit_SSD1306 display;
     LogLevel currentLogLevel;
+    bool isWarningActive = false; // Tracks whether the warning is active
+    unsigned long lastBlinkTime = 0; // Tracks the last time the warning blinked
+    const unsigned long blinkInterval = 500; // Interval for blinking (in milliseconds)
 
 public:
     DisplayManager();
@@ -33,6 +36,10 @@ public:
     virtual void showHeadline(const char* text);
     virtual void showCalibrationMessage(const char* message1, const char* message2);
     virtual void showReadings(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+    void showWarning(const char* message);
+    void showBlinkingWarning(const char* line1, const char* line2, const char* line3, const char* line4, float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+    void centerHeadline(const char* text);
+    void showNormalScreen(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
 };
 
 #endif // DISPLAY_MANAGER_H

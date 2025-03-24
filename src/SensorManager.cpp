@@ -1,26 +1,20 @@
 #include "SensorManager.h"
 #include "DisplayManager.h"
 #include <EEPROM.h>
+#include "Messages.h"
 
 bool SensorManager::initializeSensors() {
-    Logger::debug("Initializing pressure sensor...");
-    if (pressureSensor && !pressureSensor->begin(0x76)) {
-        Logger::error("Failed to initialize pressure sensor!");
+    if (!scd30.begin()) {
+        Logger::error("Failed to initialize SCD30 sensor!");
         return false;
     }
-    Logger::debug("Pressure sensor initialized successfully");
-    
-    Logger::debug("Initializing CO2 sensor...");
-    if (co2Sensor && !co2Sensor->begin()) {
-        Logger::error("Failed to initialize CO2 sensor!");
-        return false;
-    }
-    Logger::debug("CO2 sensor initialized successfully");
-    
+    Logger::info("SCD30 sensor initialized successfully.");
     return true;
 }
 
 void SensorManager::checkAndCalibrate(DisplayManager& display) {
+    display.showHeadline(MSG_CO2_MONITOR);
+    display.showCalibrationMessage("Calibration check...", MSG_CALIBRATION_NEEDED);
     // Debug EEPROM address
     String addrMsg = "Reading calibration flag from EEPROM address: " + String(EEPROM_CALIBRATION_FLAG_ADDRESS);
     Logger::debug(addrMsg.c_str());
@@ -84,69 +78,15 @@ void SensorManager::calibrate(DisplayManager& display) {
 }
 
 float SensorManager::getCO2() {
-    if (!co2Sensor) {
-        return lastValidCO2;
-    }
-    
-    float value = co2Sensor->getCO2();
-    
-    // Create a String for logging
-    String message = "CO2 reading: " + String(value) + " ppm";
-    
-    // Check if reading is valid (non-zero)
-    if (value <= 0 || value > 10000) { // Add upper bound check for implausible values
-        Logger::debug((message + " (invalid, using last valid: " + String(lastValidCO2) + ")").c_str());
-        return lastValidCO2;
-    }
-    
-    // Store the valid reading
-    lastValidCO2 = value;
-    Logger::debug(message.c_str());
-    return value;
+    return scd30.getCO2();
 }
 
 float SensorManager::getTemperatureSCD() {
-    if (!co2Sensor) {
-        return lastValidTempSCD;
-    }
-    
-    float value = co2Sensor->getTemperature();
-    
-    // Create a String for logging
-    String message = "CO2 sensor temperature: " + String(value) + " °C";
-    
-    // Check if reading is valid (non-zero and reasonable temperature range)
-    if (value <= -40 || value > 85) { // SCD30 temperature range limits
-        Logger::debug((message + " (invalid, using last valid: " + String(lastValidTempSCD) + ")").c_str());
-        return lastValidTempSCD;
-    }
-    
-    // Store the valid reading
-    lastValidTempSCD = value;
-    Logger::debug(message.c_str());
-    return value;
+    return scd30.getTemperature();
 }
 
 float SensorManager::getHumidity() {
-    if (!co2Sensor) {
-        return lastValidHumidity;
-    }
-    
-    float value = co2Sensor->getHumidity();
-    
-    // Create a String for logging
-    String message = "Humidity: " + String(value) + " %";
-    
-    // Check if reading is valid (non-zero and within reasonable range)
-    if (value <= 0 || value > 100) { // Humidity limits
-        Logger::debug((message + " (invalid, using last valid: " + String(lastValidHumidity) + ")").c_str());
-        return lastValidHumidity;
-    }
-    
-    // Store the valid reading
-    lastValidHumidity = value;
-    Logger::debug(message.c_str());
-    return value;
+    return scd30.getHumidity();
 }
 
 float SensorManager::getTemperatureBMP() {
@@ -184,18 +124,5 @@ void SensorManager::resetCalibrationFlag() {
 }
 
 bool SensorManager::isDataAvailable() {
-    if (!co2Sensor) {
-        return false;
-    }
-    
-    bool dataAvailable = co2Sensor->dataAvailable();
-    
-    // Log the data availability status
-    if (dataAvailable) {
-        Logger::debug("CO2 sensor data is available");
-    } else {
-        Logger::debug("CO2 sensor data is not available yet");
-    }
-    
-    return dataAvailable;
+    return scd30.dataAvailable();
 }

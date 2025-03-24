@@ -8,6 +8,7 @@
 #include "DisplayManager.h"
 #include "SensorManager.h"
 #include "Logger.h"
+#include "Messages.h" // Include Messages.h
 
 // Create an instance of the display
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
@@ -75,57 +76,95 @@ void setup() {
 }
 
 void loop() {
-    // Only get new readings if data is available
+    Logger::debug("loop started");
+
     if (sensorManager.isDataAvailable()) {
+        Logger::debug("Readings updated.");
+        
         float co2 = sensorManager.getCO2();
         float temperatureSCD = sensorManager.getTemperatureSCD();
         float humidity = sensorManager.getHumidity();
-        
-        // These readings are from a different sensor
         float temperatureBMP = sensorManager.getTemperatureBMP();
         float pressure = sensorManager.getPressure();
-        
-        displayManager.showReadings(co2, temperatureSCD, temperatureBMP, humidity, pressure);
-        Logger::info("Readings updated.");
+
+        // Format and log CO2 level
+        char buffer[64];
+        snprintf(buffer, sizeof(buffer), "CO2 level: %.2f ppm", co2);
+        Logger::debug(buffer);
+
+        // Format and log critical threshold
+        snprintf(buffer, sizeof(buffer), "Critical threshold: %.2f ppm", CO2_CRITICAL_THRESHOLD);
+        Logger::debug(buffer);
+
+        // Format and log moderate threshold
+        snprintf(buffer, sizeof(buffer), "Moderate threshold: %.2f ppm", CO2_MODERATE_THRESHOLD);
+        Logger::debug(buffer);
+
+        // Check CO2 thresholds and display warnings
+        if (co2 > CO2_CRITICAL_THRESHOLD) {
+            Logger::error("CRITICAL: High CO2 levels!");
+            displayManager.showBlinkingWarning(
+                "CRITICAL:", 
+                "High CO2", 
+                "levels!", 
+                "", 
+                co2, temperatureSCD, temperatureBMP, humidity, pressure
+            );
+        } else if (co2 > CO2_MODERATE_THRESHOLD) {
+            Logger::warning("MODERATE: Elevated CO2 levels!");
+            displayManager.showBlinkingWarning(
+                "MODERATE:", 
+                "Elevated", 
+                "CO2 levels!", 
+                "", 
+                co2, temperatureSCD, temperatureBMP, humidity, pressure
+            );
+        } else {
+            // Use the reusable method to display the normal screen
+            displayManager.showNormalScreen(co2, temperatureSCD, temperatureBMP, humidity, pressure);
+            Logger::info("Readings displayed.");
+        }
+    } else {
+        Logger::debug("No data available from sensors.");
     }
-    
-    delay(2000); // Still delay to avoid too frequent checks
+
+    delay(200); // Short delay for smoother blinking
+    Logger::debug("loop finished");
 }
 
 void checkAndCalibrateSCD30() {
-  // Read the calibration flag from EEPROM
-  uint8_t calibrationFlag = EEPROM.read(EEPROM_CALIBRATION_FLAG_ADDRESS);
-
-  if (calibrationFlag == CALIBRATION_DONE) {
-    // Calibration has already been performed
     Serial.println(MSG_ALREADY_CALIBRATED);
-    display.clearDisplay();
-    display.setCursor(0, 0);
-    centerHeadline(MSG_CO2_MONITOR); // Display the centered headline
-    display.display();
-    delay(2000); // Briefly show the calibration status
-  } else {
-    // Calibration has not been performed
     Serial.println(MSG_CALIBRATION_NEEDED);
+    // Read the calibration flag from EEPROM
+    uint8_t calibrationFlag = EEPROM.read(EEPROM_CALIBRATION_FLAG_ADDRESS);
+
+    if (calibrationFlag == CALIBRATION_DONE) {
+        // Calibration has already been performed
+        Serial.println(MSG_ALREADY_CALIBRATED);
+        display.clearDisplay();
+        display.display();
+        delay(2000); // Briefly show the calibration status
+    } else {
+        // Calibration has not been performed
+        Serial.println(MSG_CALIBRATION_NEEDED);
+        display.clearDisplay();
+        display.setCursor(0, 0);
+        display.println("Calibration check...");
+        display.println(MSG_CALIBRATION_NEEDED);
+        display.display();
+        delay(3000); // Wait for the user to read the message
+
+        // Perform calibration
+        calibrateSCD30();
+
+        // Mark calibration as done in EEPROM
+        EEPROM.write(EEPROM_CALIBRATION_FLAG_ADDRESS, CALIBRATION_DONE);
+        EEPROM.commit(); // Commit changes to EEPROM
+    }
+
+    // After calibration check, display the centered headline
     display.clearDisplay();
-    display.setCursor(0, 0);
-    display.println("Calibration check...");
-    display.println(MSG_CALIBRATION_NEEDED);
     display.display();
-    delay(3000); // Wait for the user to read the message
-
-    // Perform calibration
-    calibrateSCD30();
-
-    // Mark calibration as done in EEPROM
-    EEPROM.write(EEPROM_CALIBRATION_FLAG_ADDRESS, CALIBRATION_DONE);
-    EEPROM.commit(); // Commit changes to EEPROM
-  }
-
-  // After calibration check, display the centered headline
-  display.clearDisplay();
-  centerHeadline(MSG_CO2_MONITOR); // Display the centered headline
-  display.display();
 }
 
 void centerHeadline(const char* text) {
