@@ -1,16 +1,40 @@
 <map id="setup" name="setup">
-<area shape="rect" id="Node000001" title="Initializes the system, including the display, sensors, and logger." alt="" coords="5,81,59,108"/>
-<area shape="rect" id="Node000002" href="$class_logger.html#abeffd58a6beace1b1c01a5324227fd83" title="Logs a debug message." alt="" coords="112,5,215,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,79,105,42,114,37,117,41,108,46,53,83"/>
-<area shape="rect" id="Node000004" href="$class_logger.html#ac862952b8ffa9de295a496af0108785c" title="Logs an error message." alt="" coords="116,56,210,83"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="58,87,101,79,102,84,59,92"/>
-<area shape="rect" id="Node000005" href="$class_logger.html#a0c5851d03ba2e560bfd57aeb713267b3" title="Logs an informational message." alt="" coords="119,107,208,133"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="59,97,104,106,103,111,58,102"/>
-<area shape="rect" id="Node000006" href="$class_logger.html#a4d229b17ee039e273686455c74382ec6" title="Logs a warning message." alt="" coords="107,157,220,184"/>
-<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="53,106,108,143,117,148,114,153,105,148,50,111"/>
-<area shape="rect" id="Node000003" href="$class_logger.html#af0dc4ff68b6d37026b9f6c7a51da6aaa" title="Logs a message if it meets the current log level." alt="" coords="268,81,353,108"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="197,30,221,42,274,71,272,75,219,46,195,35"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="211,75,253,82,252,87,210,80"/>
-<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="208,110,252,102,253,107,209,115"/>
-<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="195,155,219,143,272,114,274,119,221,148,197,159"/>
+<area shape="rect" id="Node000001" title="Initializes the system, including the display, sensors, and logger." alt="" coords="5,335,64,360"/>
+<area shape="rect" id="Node000002" href="$classSensorManager.html#a9daa366f758f7419ab22fb3c243801fe" title="Checks if the SCD30 sensor needs calibration and performs calibration if necessary." alt="" coords="112,243,365,283"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,332,111,300,148,285,150,290,113,304,56,337"/>
+<area shape="rect" id="Node000004" href="$classLogger.html#ac862952b8ffa9de295a496af0108785c" title="Logs an error message." alt="" coords="673,143,778,168"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="33,334,36,292,46,232,56,200,69,168,87,140,110,115,173,67,233,33,292,12,351,4,411,6,476,17,545,37,621,64,647,76,671,94,707,130,704,134,667,98,644,81,619,68,543,42,474,22,411,11,351,9,293,17,235,38,176,71,114,119,91,143,74,171,61,202,51,233,41,292,39,335"/>
+<area shape="rect" id="Node000006" href="$classLogger.html#a0c5851d03ba2e560bfd57aeb713267b3" title="Logs an informational message." alt="" coords="676,283,775,308"/>
+<area shape="poly" id="edge11_Node000001_Node000006" title=" " alt="" coords="64,343,662,297,662,303,64,348"/>
+<area shape="rect" id="Node000007" href="$classLogger.html#abeffd58a6beace1b1c01a5324227fd83" title="Logs a debug message." alt="" coords="668,469,783,495"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="40,360,46,392,58,435,80,477,95,496,113,510,157,528,216,538,285,541,360,538,507,524,620,509,674,496,675,501,620,514,507,529,360,543,285,546,215,543,156,533,111,515,91,499,76,480,53,437,41,393,35,361"/>
+<area shape="rect" id="Node000008" href="$classDisplayManager.html#aeb1c8224403ea2595f202e5d93380609" title="Initializes the OLED display." alt="" coords="421,143,613,168"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="38,333,63,282,84,253,110,229,145,209,182,192,259,169,336,156,406,151,407,156,337,161,260,174,184,197,147,214,114,233,88,257,68,285,43,336"/>
+<area shape="rect" id="Node000009" href="$classSensorManager.html#aded8aff6d741a64d0c34668a0694dd3d" title="Initializes the SCD30 and BMP280 sensors." alt="" coords="423,78,610,118"/>
+<area shape="poly" id="edge15_Node000001_Node000009" title=" " alt="" coords="35,334,41,301,54,257,77,212,92,191,110,173,144,150,180,132,258,107,337,94,409,90,410,95,338,99,260,112,183,137,147,155,114,177,96,195,81,215,59,259,46,303,40,335"/>
+<area shape="rect" id="Node000010" href="$classDisplayManager.html#a2d6f5efef5cb7e03c820ab14c4adc217" title="Runs a display check to verify the OLED functionality." alt="" coords="413,358,620,398"/>
+<area shape="poly" id="edge18_Node000001_Node000010" title=" " alt="" coords="64,346,400,368,399,373,64,352"/>
+<area shape="rect" id="Node000011" href="$classI2CScanner.html#ad3b7b4bc25e6c1e8b89e702862a56af5" title="Scans the I2C bus for connected devices." alt="" coords="172,423,305,448"/>
+<area shape="poly" id="edge20_Node000001_Node000011" title=" " alt="" coords="55,358,113,392,178,416,176,421,111,396,53,362"/>
+<area shape="rect" id="Node000012" href="$classLogger.html#a4d229b17ee039e273686455c74382ec6" title="Logs a warning message." alt="" coords="453,473,580,499"/>
+<area shape="poly" id="edge25_Node000001_Node000012" title=" " alt="" coords="43,359,67,410,87,437,113,458,153,477,195,491,238,499,282,504,367,505,440,497,440,503,367,510,282,509,237,505,193,496,151,482,111,463,83,441,62,412,38,361"/>
+<area shape="rect" id="Node000013" href="$classDisplayManager.html#af6b3073649e2e7d9f4a8ce768ac51b3d" title="Displays a splash screen with a centered message." alt="" coords="127,575,350,600"/>
+<area shape="poly" id="edge24_Node000001_Node000013" title=" " alt="" coords="39,360,44,398,56,451,78,506,94,531,114,553,133,567,130,571,110,557,90,535,73,508,50,452,39,399,34,361"/>
+<area shape="rect" id="Node000003" href="$classSensorManager.html#a3608ee33385f64e74410127d59c2638e" title="Calibrates the SCD30 sensor using the forced recalibration factor." alt="" coords="423,193,611,233"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="348,241,408,230,409,235,349,246"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="366,269,662,289,662,294,366,274"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="589,190,664,169,666,174,591,195"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="573,230,621,249,683,275,681,280,619,254,571,235"/>
+<area shape="rect" id="Node000005" href="$classLogger.html#af0dc4ff68b6d37026b9f6c7a51da6aaa" title="Logs a message if it meets the current log level." alt="" coords="831,336,925,361"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="739,166,860,323,856,326,734,170"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="763,306,829,329,827,334,762,311"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="739,467,850,369,854,373,743,471"/>
+<area shape="poly" id="edge13_Node000008_Node000004" title=" " alt="" coords="613,153,659,153,659,158,613,158"/>
+<area shape="poly" id="edge14_Node000008_Node000006" title=" " alt="" coords="593,166,621,178,649,199,674,223,711,270,706,273,670,226,646,203,619,183,591,171"/>
+<area shape="poly" id="edge16_Node000009_Node000004" title=" " alt="" coords="591,115,666,136,664,141,589,121"/>
+<area shape="poly" id="edge17_Node000009_Node000006" title=" " alt="" coords="602,116,622,128,655,161,682,199,717,268,712,271,678,201,651,164,618,132,599,121"/>
+<area shape="poly" id="edge19_Node000010_Node000006" title=" " alt="" coords="571,355,619,337,681,311,683,316,621,342,573,360"/>
+<area shape="poly" id="edge21_Node000011_Node000006" title=" " alt="" coords="306,443,374,448,454,447,539,435,580,423,619,408,647,389,672,366,708,318,712,322,676,370,650,394,621,412,582,428,540,440,455,452,374,453,305,448"/>
+<area shape="poly" id="edge22_Node000011_Node000012" title=" " alt="" coords="306,445,440,469,439,475,305,450"/>
+<area shape="poly" id="edge23_Node000012_Node000005" title=" " alt="" coords="561,471,619,451,737,406,834,365,836,369,739,411,621,457,562,476"/>
 </map>
