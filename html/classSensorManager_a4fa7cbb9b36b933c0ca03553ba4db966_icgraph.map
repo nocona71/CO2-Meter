@@ -1,0 +1,5 @@
+<map id="SensorManager::isDataAvailable" name="SensorManager::isDataAvailable">
+<area shape="rect" id="Node000001" title="Checks if new data is available from the sensors." alt="" coords="104,5,337,31"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop for retrieving sensor data and updating the display." alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,21,56,21,56,15,90,15"/>
+</map>
