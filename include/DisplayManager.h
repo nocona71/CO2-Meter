@@ -8,6 +8,8 @@
 #define SCREEN_HEIGHT 64
 #define OLED_RESET -1
 #define SCREEN_ADDRESS 0x3C
+#define FONT_SIZE_SMALL 1
+#define FONT_SIZE_LARGE 2
 
 class DisplayManager {
 public:
