@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['displaymanager_0',['DisplayManager',['../class_display_manager.html',1,'']]]
+  ['displaymanager_0',['DisplayManager',['../classDisplayManager.html',1,'']]]
 ];
