@@ -43,8 +43,6 @@ public:
     void calibrateSCD30();
     void checkAndCalibrateSCD30();
 
-    // New method for running the I2C scanner
-    void runI2CScanner();
 };
 
 #endif // SENSOR_MANAGER_H

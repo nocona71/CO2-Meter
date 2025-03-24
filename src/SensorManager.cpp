@@ -55,24 +55,6 @@ void SensorManager::calibrateSCD30() {
     delay(5000);
 }
 
-// Run I2C scanner
-void SensorManager::runI2CScanner() {
-    Logger::info("Starting I2C Scanner...");
-    Wire.begin();
-
-    for (uint8_t address = 1; address < 127; address++) {
-        char buffer[40];
-        Wire.beginTransmission(address);
-        if (Wire.endTransmission() == 0) { // If the device responds
-            snprintf(buffer, sizeof(buffer), "I2C device found at address 0x%02X", address);
-            Logger::info(buffer);
-        }
-        yield(); // Reset the watchdog timer
-    }
-
-    Logger::info("I2C scan complete.");
-}
-
 // Get CO2 reading
 float SensorManager::getCO2() {
     return scd30.getCO2();
