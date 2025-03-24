@@ -40,6 +40,8 @@ public:
     void showBlinkingWarning(const char* line1, const char* line2, const char* line3, const char* line4, float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
     void centerHeadline(const char* text);
     void showNormalScreen(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+    void displayReadings(float co2, float temperatureSCD, float temperatureBMP, float humidity, float pressure);
+    void runDisplayCheck(); // New method for display check
 };
 
 #endif // DISPLAY_MANAGER_H

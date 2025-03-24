@@ -7,40 +7,39 @@ DOXYGEN = doxygen
 # Default target
 all: build
 
-# Build the sources
+# Build the main project
 build:
-	@echo "Building the project for esp12e..."
-	$(PLATFORMIO) run -e esp12e
+	@echo "Building the main project..."
+	platformio run -e esp12e
 
-# Run tests
-test:
-	@echo "Running tests in unit_test environment..."
-	$(PLATFORMIO) test -e unit_test
+# Build and deploy the I2C scanner
+scanner:
+	@echo "Building and deploying the I2C scanner..."
+	platformio run -e esp12e --project-conf tools/i2c-scanner/platformio.ini --target upload
 
-# Clean all build files
+# Deploy the main project
+deploy:
+	@echo "Deploying the main project..."
+	platformio run -e esp12e --target upload
+
+# Clean the build files
 clean:
 	@echo "Cleaning build files..."
-	$(PLATFORMIO) run --target clean
-	@rm -rf $(BUILD_DIR)
+	platformio run --target clean
 
-# Deploy to ESP32
-deploy:
-	@echo "Deploying to ESP32..."
-	$(PLATFORMIO) run -e esp12e --target upload
-
-# Generate Doxygen documentation
-docs:
-	@echo "Generating Doxygen documentation..."
-	$(DOXYGEN) Doxyfile
+# Monitor the serial output
+monitor:
+	@echo "Opening serial monitor..."
+	platformio device monitor
 
 # Help
 help:
 	@echo "Available targets:"
-	@echo "  build   - Build the project"
-	@echo "  test    - Run tests"
-	@echo "  clean   - Clean all build files"
-	@echo "  deploy  - Deploy to ESP32"
-	@echo "  docs    - Generate Doxygen documentation"
-	@echo "  help    - Show this help message"
+	@echo "  build    - Build the main project"
+	@echo "  deploy   - Deploy the main project"
+	@echo "  scanner  - Build and deploy the I2C scanner"
+	@echo "  clean    - Clean the build files"
+	@echo "  monitor  - Open the serial monitor"
+	@echo "  help     - Show this help message"
 
-.PHONY: all build test clean deploy docs help
+.PHONY: all build deploy scanner clean monitor help
