@@ -1,6 +1,5 @@
 [![Generate Doxygen Documentation](https://github.com/nocona71/CO2-Meter/actions/workflows/doxygen.yml/badge.svg)](https://github.com/nocona71/CO2-Meter/actions/workflows/doxygen.yml)
 
-
 # CO2 Meter
 
 A project for monitoring CO2 levels, temperature, humidity, and pressure using the SCD30 and BMP280 sensors. The data is displayed on an OLED screen and logged for debugging and monitoring purposes.
