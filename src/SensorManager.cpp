@@ -1,5 +1,5 @@
 #include "SensorManager.h"
-#include "DisplayManager.h"
+#include "config.h" // Include config.h for centralized constants
 #include <EEPROM.h>
 #include "Messages.h"
 #include "Logger.h"

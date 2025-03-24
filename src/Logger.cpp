@@ -1,7 +1,9 @@
 #include "Logger.h"
+#include <Arduino.h>
+#include "config.h"
 
 // Initialize the static member variable
-LogLevel Logger::currentLogLevel = LOG_INFO;
+LogLevel Logger::currentLogLevel = static_cast<LogLevel>(LOG_LEVEL);
 
 // Initialize static constants
 const LogLevel Logger::NONE = LOG_NONE;
@@ -46,5 +48,5 @@ void Logger::info(const char* message) {
 }
 
 void Logger::debug(const char* message) { 
-    log(LOG_DEBUG, message);  // Make sure this is LOG_DEBUG (value 4)
+    log(LOG_DEBUG, message); 
 }

@@ -6,6 +6,7 @@
 #include <SparkFun_SCD30_Arduino_Library.h>
 #include <Adafruit_BMP280.h>
 #include <Wire.h>
+#include "config.h" // Include config.h for centralized constants
 
 class DisplayManager; // Forward declaration
 
