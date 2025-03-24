@@ -1,0 +1,9 @@
+<map id="Logger::warning" name="Logger::warning">
+<area shape="rect" id="Node000001" title="Logs a warning message." alt="" coords="180,56,293,83"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop for retrieving sensor data and updating the display." alt="" coords="46,5,91,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,54,91,28,92,23,176,48"/>
+<area shape="rect" id="Node000003" href="$class_i2_c_scanner.html#ad3b7b4bc25e6c1e8b89e702862a56af5" title="Scans the I2C bus for connected devices." alt="" coords="5,56,132,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,72,132,72,132,67,164,67"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Initializes the system, including the display, sensors, and logger." alt="" coords="42,107,95,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="176,90,97,115,95,110,174,85"/>
+</map>

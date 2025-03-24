@@ -1,0 +1,9 @@
+<map id="include/I2CScanner.h" name="include/I2CScanner.h">
+<area shape="rect" id="Node000001" title="Provides functionality to scan the I2C bus for connected devices." alt="" coords="6,5,152,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,65,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,34,53,68,48,65,69,31"/>
+<area shape="rect" id="Node000003" href="$_logger_8h.html" title="Provides logging functionality with different log levels for debugging and monitoring." alt="" coords="89,80,160,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="89,31,111,65,106,68,85,34"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="86,155,162,181"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="127,107,127,139,122,139,122,107"/>
+</map>

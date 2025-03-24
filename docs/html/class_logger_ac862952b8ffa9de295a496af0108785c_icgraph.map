@@ -1,0 +1,15 @@
+<map id="Logger::error" name="Logger::error">
+<area shape="rect" id="Node000001" title="Logs an error message." alt="" coords="568,131,662,157"/>
+<area shape="rect" id="Node000002" href="$class_sensor_manager.html#a3608ee33385f64e74410127d59c2638e" title="Calibrates the SCD30 sensor using the forced recalibration factor." alt="" coords="317,5,486,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="590,121,558,90,519,62,486,48,488,43,521,58,562,86,594,117"/>
+<area shape="rect" id="Node000004" href="$class_display_manager.html#aeb1c8224403ea2595f202e5d93380609" title="Initializes the OLED display." alt="" coords="317,72,487,99"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="563,127,519,113,474,102,475,97,521,108,565,122"/>
+<area shape="rect" id="Node000005" href="$class_sensor_manager.html#aded8aff6d741a64d0c34668a0694dd3d" title="Initializes the SCD30 and BMP280 sensors." alt="" coords="318,123,486,165"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="552,147,486,147,486,141,552,141"/>
+<area shape="rect" id="Node000006" href="$class_sensor_manager.html#ad6448faa4a1a1e9647682ee4a7005d80" title="Resets the calibration flag stored in EEPROM." alt="" coords="284,189,520,216"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="565,166,521,180,475,191,474,186,519,175,563,161"/>
+<area shape="rect" id="Node000007" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Initializes the system, including the display, sensors, and logger." alt="" coords="375,240,428,267"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="594,171,562,202,521,230,474,247,429,254,429,249,472,242,519,226,559,198,591,167"/>
+<area shape="rect" id="Node000003" href="$class_sensor_manager.html#a9daa366f758f7419ab22fb3c243801fe" title="Checks if the SCD30 sensor needs calibration and performs calibration if necessary." alt="" coords="5,5,236,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,29,236,29,236,24,301,24"/>
+</map>
