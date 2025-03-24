@@ -13,7 +13,7 @@
 # TAG += value [value, ...]
 # Values that contain spaces should be placed between quotes (\" \").
 #
-# Note:
+# Note: 
 #
 # Use Doxygen to compare the used configuration file with the template
 # configuration file:
@@ -991,7 +991,7 @@ WARN_LOGFILE           = warnings.log
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = src test
+INPUT                  = ./src ./include
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 enc    oding. Doxygen uses

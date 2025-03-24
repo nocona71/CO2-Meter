@@ -1,0 +1,30 @@
+name: Generate Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - main  # Run the workflow on pushes to the main branch
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Install Doxygen
+      - name: Install Doxygen
+        run: sudo apt-get install -y doxygen graphviz
+
+      # Step 3: Generate Documentation
+      - name: Generate Documentation
+        run: doxygen Doxyfile
+
+      # Step 4: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
