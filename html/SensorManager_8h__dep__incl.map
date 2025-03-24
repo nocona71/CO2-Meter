@@ -1,0 +1,7 @@
+<map id="include/SensorManager.h" name="include/SensorManager.h">
+<area shape="rect" id="Node000001" title="Manages the initialization, calibration, and data retrieval from sensors." alt="" coords="80,5,265,31"/>
+<area shape="rect" id="Node000002" href="$SensorManager_8cpp.html" title="Implements the functionality for managing the SCD30 and BMP280 sensors." alt="" coords="5,79,177,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,42,106,80,103,76,148,38"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title="Main entry point for the CO2 Meter application." alt="" coords="201,79,307,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,38,242,76,239,80,194,42"/>
+</map>
