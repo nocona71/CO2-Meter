@@ -3,6 +3,7 @@
 
 #include "SensorInterface.h"
 #include "Logger.h"
+#include <SparkFun_SCD30_Arduino_Library.h>
 
 class DisplayManager; // Forward declaration
 
@@ -10,6 +11,7 @@ class SensorManager {
 private:
     CO2SensorInterface* co2Sensor;
     PressureSensorInterface* pressureSensor;
+    SCD30 scd30; // Declare the SCD30 object
     
     // Last valid readings
     float lastValidCO2 = 400.0f;

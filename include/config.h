@@ -22,5 +22,7 @@
 
 // Calibration settings
 #define FRESH_AIR_CO2 400
+#define CO2_MODERATE_THRESHOLD 1000.0 // ppm
+#define CO2_CRITICAL_THRESHOLD 2000.0  // ppm
 
 #endif // CONFIG_H
