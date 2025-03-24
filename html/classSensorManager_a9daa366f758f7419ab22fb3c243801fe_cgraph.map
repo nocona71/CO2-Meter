@@ -1,0 +1,13 @@
+<map id="SensorManager::checkAndCalibrateSCD30" name="SensorManager::checkAndCalibrateSCD30">
+<area shape="rect" id="Node000001" title="Checks if the SCD30 sensor needs calibration and performs calibration if necessary." alt="" coords="5,35,259,75"/>
+<area shape="rect" id="Node000002" href="$classSensorManager.html#a3608ee33385f64e74410127d59c2638e" title="Calibrates the SCD30 sensor using the forced recalibration factor." alt="" coords="307,5,495,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,38,293,34,293,40,259,43"/>
+<area shape="rect" id="Node000005" href="$classLogger.html#a0c5851d03ba2e560bfd57aeb713267b3" title="Logs an informational message." alt="" coords="546,62,645,87"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="259,57,532,69,532,75,259,63"/>
+<area shape="rect" id="Node000003" href="$classLogger.html#ac862952b8ffa9de295a496af0108785c" title="Logs an error message." alt="" coords="543,13,648,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="495,23,529,23,529,28,495,28"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="481,43,533,56,532,62,479,48"/>
+<area shape="rect" id="Node000004" href="$classLogger.html#af0dc4ff68b6d37026b9f6c7a51da6aaa" title="Logs a message if it meets the current log level." alt="" coords="696,38,791,63"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="649,32,683,38,682,43,648,37"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="645,64,682,58,683,63,645,69"/>
+</map>

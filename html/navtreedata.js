@@ -49,8 +49,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_display_manager_8cpp_source.html"
+"DisplayManager_8cpp_source.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';

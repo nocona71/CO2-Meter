@@ -1,0 +1,409 @@
+\doxysection{Logger Class Reference}
+\hypertarget{classLogger}{}\label{classLogger}\index{Logger@{Logger}}
+
+
+A utility class for logging messages at different log levels.  
+
+
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+
+
+Collaboration diagram for Logger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{classLogger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classLogger_abeffd58a6beace1b1c01a5324227fd83}{debug}} (const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Logs a debug message. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLogger_ac862952b8ffa9de295a496af0108785c}{error}} (const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Logs an error message. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \mbox{\hyperlink{classLogger_a664ed7a5c0c16219a28a06b5889e131a}{get\+Log\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current log level. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLogger_a0c5851d03ba2e560bfd57aeb713267b3}{info}} (const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Logs an informational message. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLogger_af0dc4ff68b6d37026b9f6c7a51da6aaa}{log}} (\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level, const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Logs a message if it meets the current log level. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLogger_a00fdcdbeb39a2d5d4fb27cc36c35c101}{set\+Log\+Level}} (\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Sets the current log level. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLogger_a4d229b17ee039e273686455c74382ec6}{warning}} (const char \texorpdfstring{$\ast$}{*}message)
+\begin{DoxyCompactList}\small\item\em Logs a warning message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \mbox{\hyperlink{classLogger_afdb1bb87aeebe7802b629d0edda20473}{DBG}} = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\+\_\+\+DEBUG}}
+\begin{DoxyCompactList}\small\item\em Debug logging (renamed to avoid macro conflicts). \end{DoxyCompactList}\item 
+static const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \mbox{\hyperlink{classLogger_a18e1b83055c67f604bd9f69f722df914}{ERROR}} = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\+\_\+\+ERROR}}
+\begin{DoxyCompactList}\small\item\em Error logging. \end{DoxyCompactList}\item 
+static const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \mbox{\hyperlink{classLogger_ac2d35f9c26f2917066c200c5b4aa0b47}{INFO}} = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\+\_\+\+INFO}}
+\begin{DoxyCompactList}\small\item\em Informational logging. \end{DoxyCompactList}\item 
+static const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \mbox{\hyperlink{classLogger_ac9e82404b92664fca241b1dc19f7cfec}{NONE}} = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}{LOG\+\_\+\+NONE}}
+\begin{DoxyCompactList}\small\item\em Enum-\/like constants for log levels. \end{DoxyCompactList}\item 
+static const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \mbox{\hyperlink{classLogger_ae34ea5cb0e379ba342b2147ad1018fd1}{WARNING}} = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\+\_\+\+WARNING}}
+\begin{DoxyCompactList}\small\item\em Warning logging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A utility class for logging messages at different log levels. 
+
+The {\ttfamily \doxylink{classLogger}{Logger}} class provides methods to log messages at various levels (error, warning, info, debug). It allows setting a global log level to control the verbosity of the logs. 
+
+Definition at line \mbox{\hyperlink{Logger_8h_source_l00036}{36}} of file \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLogger_a00fdcdbeb39a2d5d4fb27cc36c35c101}\label{classLogger_a00fdcdbeb39a2d5d4fb27cc36c35c101} 
+\index{Logger@{Logger}!setLogLevel@{setLogLevel}}
+\index{setLogLevel@{setLogLevel}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setLogLevel()}{setLogLevel()}}
+{\footnotesize\ttfamily void Logger\+::set\+Log\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the current log level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The log level to set (e.\+g., {\ttfamily LOG\+\_\+\+ERROR}, {\ttfamily LOG\+\_\+\+INFO}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Logger_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ currentLogLevel\ =\ level;}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classLogger_a664ed7a5c0c16219a28a06b5889e131a}\label{classLogger_a664ed7a5c0c16219a28a06b5889e131a} 
+\index{Logger@{Logger}!getLogLevel@{getLogLevel}}
+\index{getLogLevel@{getLogLevel}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{getLogLevel()}{getLogLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} Logger\+::get\+Log\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the current log level. 
+
+\begin{DoxyReturn}{Returns}
+The current log level. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Logger_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{return}\ currentLogLevel;}
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classLogger_af0dc4ff68b6d37026b9f6c7a51da6aaa}\label{classLogger_af0dc4ff68b6d37026b9f6c7a51da6aaa} 
+\index{Logger@{Logger}!log@{log}}
+\index{log@{log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void Logger\+::log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Logs a message if it meets the current log level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The log level of the message. \\
+\hline
+{\em message} & The message to log. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Logger_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (level\ <=\ currentLogLevel)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}["{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (level)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}}:\ Serial.print(\textcolor{stringliteral}{"{}ERROR"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\_WARNING}}:\ Serial.print(\textcolor{stringliteral}{"{}WARNING"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\_INFO}}:\ Serial.print(\textcolor{stringliteral}{"{}INFO"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\_DEBUG}}:\ Serial.print(\textcolor{stringliteral}{"{}DEBUG"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ Serial.print(\textcolor{stringliteral}{"{}UNKNOWN"{}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}]\ "{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ Serial.println(message);}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_af0dc4ff68b6d37026b9f6c7a51da6aaa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_ac862952b8ffa9de295a496af0108785c}\label{classLogger_ac862952b8ffa9de295a496af0108785c} 
+\index{Logger@{Logger}!error@{error}}
+\index{error@{error}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily void Logger\+::error (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Logs an error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The error message to log. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Logger_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{classLogger_af0dc4ff68b6d37026b9f6c7a51da6aaa}{log}}(\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\_ERROR}},\ message);\ }
+\DoxyCodeLine{00070\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{classLogger_ac862952b8ffa9de295a496af0108785c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_ac862952b8ffa9de295a496af0108785c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_a4d229b17ee039e273686455c74382ec6}\label{classLogger_a4d229b17ee039e273686455c74382ec6} 
+\index{Logger@{Logger}!warning@{warning}}
+\index{warning@{warning}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{warning()}{warning()}}
+{\footnotesize\ttfamily void Logger\+::warning (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Logs a warning message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The warning message to log. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Logger_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classLogger_af0dc4ff68b6d37026b9f6c7a51da6aaa}{log}}(\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\_WARNING}},\ message);\ }
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{classLogger_a4d229b17ee039e273686455c74382ec6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_a4d229b17ee039e273686455c74382ec6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_a0c5851d03ba2e560bfd57aeb713267b3}\label{classLogger_a0c5851d03ba2e560bfd57aeb713267b3} 
+\index{Logger@{Logger}!info@{info}}
+\index{info@{info}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily void Logger\+::info (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Logs an informational message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The informational message to log. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Logger_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{classLogger_af0dc4ff68b6d37026b9f6c7a51da6aaa}{log}}(\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\_INFO}},\ message);\ }
+\DoxyCodeLine{00088\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{classLogger_a0c5851d03ba2e560bfd57aeb713267b3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_a0c5851d03ba2e560bfd57aeb713267b3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classLogger_abeffd58a6beace1b1c01a5324227fd83}\label{classLogger_abeffd58a6beace1b1c01a5324227fd83} 
+\index{Logger@{Logger}!debug@{debug}}
+\index{debug@{debug}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{debug()}{debug()}}
+{\footnotesize\ttfamily void Logger\+::debug (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Logs a debug message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The debug message to log. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Logger_8cpp_source_l00095}{95}} of file \mbox{\hyperlink{Logger_8cpp_source}{Logger.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{classLogger_af0dc4ff68b6d37026b9f6c7a51da6aaa}{log}}(\mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\_DEBUG}},\ message);\ }
+\DoxyCodeLine{00097\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classLogger_abeffd58a6beace1b1c01a5324227fd83_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogger_abeffd58a6beace1b1c01a5324227fd83_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLogger_ac9e82404b92664fca241b1dc19f7cfec}\label{classLogger_ac9e82404b92664fca241b1dc19f7cfec} 
+\index{Logger@{Logger}!NONE@{NONE}}
+\index{NONE@{NONE}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{NONE}{NONE}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} Logger\+::\+NONE = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a85639df34979de4e5ff6f7b05e4de8f1}{LOG\+\_\+\+NONE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Enum-\/like constants for log levels. 
+
+Initializes static constants for log levels.
+
+No logging. 
+
+Definition at line \mbox{\hyperlink{Logger_8h_source_l00044}{44}} of file \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}}.
+
+\Hypertarget{classLogger_a18e1b83055c67f604bd9f69f722df914}\label{classLogger_a18e1b83055c67f604bd9f69f722df914} 
+\index{Logger@{Logger}!ERROR@{ERROR}}
+\index{ERROR@{ERROR}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{ERROR}{ERROR}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} Logger\+::\+ERROR = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a230506cce5c68c3bac5a821c42ed3473}{LOG\+\_\+\+ERROR}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Error logging. 
+
+
+
+Definition at line \mbox{\hyperlink{Logger_8h_source_l00045}{45}} of file \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}}.
+
+\Hypertarget{classLogger_ae34ea5cb0e379ba342b2147ad1018fd1}\label{classLogger_ae34ea5cb0e379ba342b2147ad1018fd1} 
+\index{Logger@{Logger}!WARNING@{WARNING}}
+\index{WARNING@{WARNING}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{WARNING}{WARNING}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} Logger\+::\+WARNING = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a8f6fe15bfe15104da6d1b360194a5400}{LOG\+\_\+\+WARNING}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Warning logging. 
+
+
+
+Definition at line \mbox{\hyperlink{Logger_8h_source_l00046}{46}} of file \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}}.
+
+\Hypertarget{classLogger_ac2d35f9c26f2917066c200c5b4aa0b47}\label{classLogger_ac2d35f9c26f2917066c200c5b4aa0b47} 
+\index{Logger@{Logger}!INFO@{INFO}}
+\index{INFO@{INFO}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{INFO}{INFO}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} Logger\+::\+INFO = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a6e98ff471e3ce6c4ef2d75c37ee51837}{LOG\+\_\+\+INFO}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Informational logging. 
+
+
+
+Definition at line \mbox{\hyperlink{Logger_8h_source_l00047}{47}} of file \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}}.
+
+\Hypertarget{classLogger_afdb1bb87aeebe7802b629d0edda20473}\label{classLogger_afdb1bb87aeebe7802b629d0edda20473} 
+\index{Logger@{Logger}!DBG@{DBG}}
+\index{DBG@{DBG}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{DBG}{DBG}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} Logger\+::\+DBG = \mbox{\hyperlink{Logger_8h_aca1fd1d8935433e6ba2e3918214e07f9ab9f002c6ffbfd511da8090213227454e}{LOG\+\_\+\+DEBUG}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Debug logging (renamed to avoid macro conflicts). 
+
+
+
+Definition at line \mbox{\hyperlink{Logger_8h_source_l00048}{48}} of file \mbox{\hyperlink{Logger_8h_source}{Logger.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Logger_8h}{Logger.\+h}}\item 
+src/\mbox{\hyperlink{Logger_8cpp}{Logger.\+cpp}}\end{DoxyCompactItemize}
