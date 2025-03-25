@@ -20,3 +20,5 @@ jobs:
           doxyfile-path: ./Doxyfile
           html-output-folder: docs/html
           branch: gh-pages
+      - name: Disable Jekyll
+        run: echo "" > docs/html/.nojekyll
