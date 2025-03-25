@@ -1,8 +1,20 @@
 [![Generate Doxygen Documentation](https://github.com/nocona71/CO2-Meter/actions/workflows/doxygen.yml/badge.svg)](https://github.com/nocona71/CO2-Meter/actions/workflows/doxygen.yml)
 
 # CO2 Meter
+![picture CO2 Meter](https://github.com/user-attachments/assets/8291c880-8882-44aa-b4b9-4ead3586cbe0)
 
 A project for monitoring CO2 levels, temperature, humidity, and pressure using the SCD30 and BMP280 sensors. The data is displayed on an OLED screen and logged for debugging and monitoring purposes.
+
+---
+
+## **Features**
+
+- **CO2 Monitoring:** Measures CO2 levels using the SCD30 sensor.
+- **Environmental Data:** Reads temperature, humidity, and pressure from the SCD30 and BMP280 sensors.
+- **OLED Display:** Displays sensor readings and warnings on an SSD1306 OLED screen.
+- **Logging:** Logs sensor data and system messages using the `Logger` class.
+- **Calibration:** Automatically calibrates the SCD30 sensor and stores the calibration flag in EEPROM.
+- **I2C Scanner:** Scans the I2C bus for connected devices.
 
 ---
 
@@ -133,16 +145,6 @@ make upload
 
 ---
 
-## **Features**
-
-- **CO2 Monitoring:** Measures CO2 levels using the SCD30 sensor.
-- **Environmental Data:** Reads temperature, humidity, and pressure from the SCD30 and BMP280 sensors.
-- **OLED Display:** Displays sensor readings and warnings on an SSD1306 OLED screen.
-- **Logging:** Logs sensor data and system messages using the `Logger` class.
-- **Calibration:** Automatically calibrates the SCD30 sensor and stores the calibration flag in EEPROM.
-- **I2C Scanner:** Scans the I2C bus for connected devices.
-
----
 
 ## **Using Additional Makefile Targets**
 
