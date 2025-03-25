@@ -1,0 +1,5 @@
+<map id="DisplayManager::runDisplayCheck" name="DisplayManager::runDisplayCheck">
+<area shape="rect" id="Node000001" title="Runs a display check to verify the OLED functionality." alt="" coords="107,5,292,44"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Initializes the system, including the display, sensors, and logger." alt="" coords="5,12,59,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,27,59,27,59,22,91,22"/>
+</map>

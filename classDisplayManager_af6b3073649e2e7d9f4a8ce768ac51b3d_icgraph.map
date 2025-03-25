@@ -1,0 +1,5 @@
+<map id="DisplayManager::splashScreen" name="DisplayManager::splashScreen">
+<area shape="rect" id="Node000001" title="Displays a splash screen with a centered message." alt="" coords="107,5,309,30"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Initializes the system, including the display, sensors, and logger." alt="" coords="5,5,59,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,20,59,20,59,15,91,15"/>
+</map>

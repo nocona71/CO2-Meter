@@ -1,0 +1,54 @@
+<map id="Logger::log" name="Logger::log">
+<area shape="rect" id="Node000001" title="Logs a message if it meets the current log level." alt="" coords="823,330,908,355"/>
+<area shape="rect" id="Node000002" href="$classLogger.html#abeffd58a6beace1b1c01a5324227fd83" title="Logs a debug message." alt="" coords="671,142,775,167"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="843,319,731,169,736,165,847,316"/>
+<area shape="rect" id="Node000009" href="$classLogger.html#ac862952b8ffa9de295a496af0108785c" title="Logs an error message." alt="" coords="676,384,770,408"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="817,363,759,385,757,380,815,358"/>
+<area shape="rect" id="Node000014" href="$classLogger.html#a0c5851d03ba2e560bfd57aeb713267b3" title="Logs an informational message." alt="" coords="678,566,768,591"/>
+<area shape="poly" id="edge21_Node000001_Node000014" title=" " alt="" coords="851,370,734,567,730,564,846,367"/>
+<area shape="rect" id="Node000017" href="$classLogger.html#a4d229b17ee039e273686455c74382ec6" title="Logs a warning message." alt="" coords="448,290,560,315"/>
+<area shape="poly" id="edge32_Node000001_Node000017" title=" " alt="" coords="807,339,560,311,560,306,807,334"/>
+<area shape="rect" id="Node000003" href="$classSensorManager.html#ab621f498c240f93c0d9a7e47cbb669c6" title="Retrieves the current pressure reading from the BMP280 sensor." alt="" coords="408,142,599,167"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="656,157,599,157,599,152,656,152"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop for retrieving sensor data and updating the display." alt="" coords="199,168,244,192"/>
+<area shape="poly" id="edge8_Node000002_Node000004" title=" " alt="" coords="664,141,623,133,503,123,451,125,384,133,307,152,246,173,244,168,306,147,384,128,451,119,504,117,624,128,664,135"/>
+<area shape="rect" id="Node000005" href="$classSensorManager.html#aa4207d6b919d2deac9d8b95c6a36f8b9" title="Retrieves the current temperature reading from the BMP280 sensor." alt="" coords="384,192,623,216"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="657,173,624,181,568,194,567,188,623,176,655,168"/>
+<area shape="rect" id="Node000006" href="$classSensorManager.html#a4fa7cbb9b36b933c0ca03553ba4db966" title="Checks if new data is available from the sensors." alt="" coords="400,44,608,68"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="693,134,660,111,622,89,571,71,572,66,624,84,663,106,696,130"/>
+<area shape="rect" id="Node000007" href="$classSensorManager.html#ad6448faa4a1a1e9647682ee4a7005d80" title="Resets the calibration flag stored in EEPROM." alt="" coords="386,241,621,266"/>
+<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="700,179,666,206,624,230,589,243,587,238,622,225,663,202,696,175"/>
+<area shape="rect" id="Node000008" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Initializes the system, including the display, sensors, and logger." alt="" coords="5,440,59,464"/>
+<area shape="poly" id="edge10_Node000002_Node000008" title=" " alt="" coords="707,129,674,78,650,53,622,34,589,20,560,12,533,8,507,9,452,19,385,34,298,51,229,68,199,81,170,99,140,124,109,158,85,193,66,232,53,273,44,314,36,388,35,439,30,439,31,388,39,313,48,271,62,230,80,190,105,154,136,120,166,95,196,76,227,63,297,46,383,29,451,13,506,4,533,3,561,7,591,15,625,30,654,49,678,75,712,126"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="393,167,245,181,244,175,393,162"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="369,195,244,184,244,179,369,190"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="425,75,385,89,304,130,243,169,240,165,302,125,383,84,424,70"/>
+<area shape="poly" id="edge19_Node000009_Node000007" title=" " alt="" coords="705,372,671,324,648,301,622,281,595,269,597,264,625,276,652,297,675,321,709,369"/>
+<area shape="poly" id="edge20_Node000009_Node000008" title=" " alt="" coords="660,385,553,369,413,359,337,360,259,366,182,379,108,401,74,420,48,441,44,437,71,415,106,396,180,374,258,361,336,354,413,354,554,364,661,380"/>
+<area shape="rect" id="Node000010" href="$classSensorManager.html#a3608ee33385f64e74410127d59c2638e" title="Calibrates the SCD30 sensor using the forced recalibration factor." alt="" coords="419,502,588,541"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="704,422,670,458,625,492,590,507,587,502,622,487,666,454,700,418"/>
+<area shape="rect" id="Node000012" href="$classDisplayManager.html#aeb1c8224403ea2595f202e5d93380609" title="Initializes the OLED display." alt="" coords="419,453,588,478"/>
+<area shape="poly" id="edge15_Node000009_Node000012" title=" " alt="" coords="685,418,624,444,583,455,581,450,622,439,683,413"/>
+<area shape="rect" id="Node000013" href="$classSensorManager.html#aded8aff6d741a64d0c34668a0694dd3d" title="Initializes the SCD30 and BMP280 sensors." alt="" coords="420,390,587,429"/>
+<area shape="poly" id="edge17_Node000009_Node000013" title=" " alt="" coords="660,402,587,407,587,401,660,397"/>
+<area shape="rect" id="Node000011" href="$classSensorManager.html#a9daa366f758f7419ab22fb3c243801fe" title="Checks if the SCD30 sensor needs calibration and performs calibration if necessary." alt="" coords="107,539,336,578"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="404,537,337,546,336,541,403,532"/>
+<area shape="poly" id="edge14_Node000011_Node000008" title=" " alt="" coords="131,535,105,522,69,494,42,466,46,463,73,490,108,518,134,531"/>
+<area shape="poly" id="edge16_Node000012_Node000008" title=" " alt="" coords="403,481,262,489,184,487,106,478,59,465,60,460,107,473,184,481,262,483,403,475"/>
+<area shape="poly" id="edge18_Node000013_Node000008" title=" " alt="" coords="405,409,263,413,185,419,107,430,60,444,58,439,106,425,184,414,263,407,405,404"/>
+<area shape="poly" id="edge26_Node000014_Node000004" title=" " alt="" coords="663,584,590,585,508,583,433,574,404,566,382,555,367,542,357,528,348,498,344,466,333,429,272,291,226,194,231,192,277,289,339,427,349,465,353,497,362,525,371,538,386,551,406,561,434,569,508,578,590,580,663,579"/>
+<area shape="poly" id="edge31_Node000014_Node000008" title=" " alt="" coords="707,606,673,645,650,664,624,678,560,698,506,700,451,691,384,679,300,669,234,659,204,651,173,638,140,619,105,593,77,562,56,526,34,466,39,464,61,524,81,559,108,589,143,615,175,633,205,646,235,654,301,663,384,673,452,686,506,694,559,693,622,673,647,660,669,642,703,602"/>
+<area shape="poly" id="edge22_Node000014_Node000010" title=" " alt="" coords="662,566,580,544,581,539,664,560"/>
+<area shape="poly" id="edge23_Node000014_Node000011" title=" " alt="" coords="700,604,666,630,624,650,558,668,504,673,450,666,383,650,344,637,307,619,247,580,250,576,309,614,346,632,385,645,451,661,504,667,557,663,622,645,663,625,697,599"/>
+<area shape="poly" id="edge24_Node000014_Node000012" title=" " alt="" coords="700,557,666,523,622,493,588,480,590,475,625,488,669,519,704,553"/>
+<area shape="poly" id="edge25_Node000014_Node000013" title=" " alt="" coords="707,554,674,497,650,468,622,443,586,426,588,421,625,439,654,464,678,494,712,551"/>
+<area shape="rect" id="Node000015" href="$classDisplayManager.html#a2d6f5efef5cb7e03c820ab14c4adc217" title="Runs a display check to verify the OLED functionality." alt="" coords="129,769,314,807"/>
+<area shape="poly" id="edge27_Node000014_Node000015" title=" " alt="" coords="717,607,705,641,686,681,660,720,625,751,588,771,549,786,508,797,467,803,386,808,314,804,314,799,386,803,466,798,507,791,547,781,586,766,622,747,656,716,682,678,700,639,712,605"/>
+<area shape="rect" id="Node000016" href="$classI2CScanner.html#ad3b7b4bc25e6c1e8b89e702862a56af5" title="Scans the I2C bus for connected devices." alt="" coords="159,440,284,464"/>
+<area shape="poly" id="edge29_Node000014_Node000016" title=" " alt="" coords="673,599,612,615,537,626,498,627,458,623,419,615,383,600,364,584,355,567,348,549,334,530,289,494,246,467,249,462,292,489,338,526,352,546,360,565,368,581,385,595,421,609,459,618,498,621,537,620,611,610,672,594"/>
+<area shape="poly" id="edge28_Node000015_Node000008" title=" " alt="" coords="117,762,105,751,90,728,77,694,56,610,32,465,37,464,61,609,82,693,95,725,109,747,120,758"/>
+<area shape="poly" id="edge30_Node000016_Node000008" title=" " alt="" coords="143,455,59,455,59,449,143,449"/>
+<area shape="poly" id="edge33_Node000017_Node000004" title=" " alt="" coords="432,294,383,280,340,260,300,237,238,195,241,190,303,232,343,255,385,275,433,289"/>
+<area shape="poly" id="edge35_Node000017_Node000008" title=" " alt="" coords="432,293,360,286,276,287,232,292,189,302,147,316,108,335,82,358,62,387,39,440,35,438,57,385,78,355,105,331,145,311,187,297,231,287,275,282,360,281,432,287"/>
+<area shape="poly" id="edge34_Node000017_Node000016" title=" " alt="" coords="466,325,248,441,245,437,463,320"/>
+</map>

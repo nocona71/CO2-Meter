@@ -1,0 +1,18 @@
+<map id="Logger::error" name="Logger::error">
+<area shape="rect" id="Node000001" title="Logs an error message." alt="" coords="667,120,762,145"/>
+<area shape="rect" id="Node000002" href="$classSensorManager.html#a3608ee33385f64e74410127d59c2638e" title="Calibrates the SCD30 sensor using the forced recalibration factor." alt="" coords="417,5,586,44"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="686,112,654,88,618,66,574,47,576,42,621,61,658,84,689,108"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Initializes the system, including the display, sensors, and logger." alt="" coords="5,95,59,120"/>
+<area shape="poly" id="edge9_Node000001_Node000004" title=" " alt="" coords="652,122,619,117,452,105,289,102,59,108,59,103,289,97,453,99,620,111,653,116"/>
+<area shape="rect" id="Node000005" href="$classDisplayManager.html#aeb1c8224403ea2595f202e5d93380609" title="Initializes the OLED display." alt="" coords="137,119,306,144"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="652,135,306,134,306,129,652,130"/>
+<area shape="rect" id="Node000006" href="$classSensorManager.html#aded8aff6d741a64d0c34668a0694dd3d" title="Initializes the SCD30 and BMP280 sensors." alt="" coords="138,168,304,207"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="652,142,305,181,305,175,652,137"/>
+<area shape="rect" id="Node000007" href="$classSensorManager.html#ad6448faa4a1a1e9647682ee4a7005d80" title="Resets the calibration flag stored in EEPROM." alt="" coords="384,220,619,245"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="690,157,658,182,620,204,571,222,569,217,618,200,655,177,687,153"/>
+<area shape="rect" id="Node000003" href="$classSensorManager.html#a9daa366f758f7419ab22fb3c243801fe" title="Checks if the SCD30 sensor needs calibration and performs calibration if necessary." alt="" coords="107,5,336,44"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,27,336,27,336,22,402,22"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="141,52,108,66,53,97,51,92,105,61,139,47"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="121,121,59,113,60,108,122,116"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="122,165,106,158,74,140,48,122,51,118,77,136,108,153,124,160"/>
+</map>

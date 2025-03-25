@@ -1,0 +1,5 @@
+<map id="DisplayManager::showBlinkingWarning" name="DisplayManager::showBlinkingWarning">
+<area shape="rect" id="Node000001" title="Displays a blinking warning message on the screen." alt="" coords="99,5,299,44"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop for retrieving sensor data and updating the display." alt="" coords="5,12,51,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,27,51,27,51,22,83,22"/>
+</map>

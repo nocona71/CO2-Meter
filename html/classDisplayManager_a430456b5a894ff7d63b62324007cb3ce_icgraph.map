@@ -1,8 +1,0 @@
-<map id="DisplayManager::showNormalScreen" name="DisplayManager::showNormalScreen">
-<area shape="rect" id="Node000001" title="Displays the normal screen with sensor readings." alt="" coords="375,5,593,45"/>
-<area shape="rect" id="Node000002" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop for retrieving sensor data and updating the display." alt="" coords="5,13,56,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="361,24,104,24,57,26,57,21,104,19,361,19"/>
-<area shape="rect" id="Node000003" href="$classDisplayManager.html#af8a5a8ee843f0ccc7bf50dc94ff2d529" title="Displays a blinking warning message on the screen." alt="" coords="104,33,327,73"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="361,41,327,44,327,39,361,35"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="90,37,56,32,57,26,91,32"/>
-</map>

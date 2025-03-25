@@ -1,0 +1,22 @@
+<map id="src/SensorManager.cpp" name="src/SensorManager.cpp">
+<area shape="rect" id="Node000001" title="Implements the functionality for managing the SCD30 and BMP280 sensors." alt="" coords="401,5,560,30"/>
+<area shape="rect" id="Node000002" href="$SensorManager_8h.html" title="Manages the initialization, calibration, and data retrieval from sensors." alt="" coords="299,78,422,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="462,33,395,72,392,67,460,28"/>
+<area shape="rect" id="Node000003" href="$Logger_8h.html" title="Provides logging functionality with different log levels for debugging and monitoring." alt="" coords="8,158,79,182"/>
+<area shape="poly" id="edge10_Node000001_Node000003" title=" " alt="" coords="441,33,288,81,190,116,92,153,89,154,87,149,91,148,188,111,287,75,439,28"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="463,158,522,182"/>
+<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="484,30,493,142,488,142,479,30"/>
+<area shape="rect" id="Node000008" href="$config_8h_source.html" title=" " alt="" coords="547,158,614,182"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="491,29,567,143,562,146,486,32"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="569,78,657,103"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="504,28,579,68,576,73,501,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="299,105,201,125,92,153,87,155,86,150,91,148,200,120,298,100"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="261,151,439,189"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="362,103,357,136,352,135,357,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="103,158,237,182"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="333,106,214,154,212,149,331,101"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="382,101,461,147,458,152,379,105"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="397,101,535,148,538,149,536,154,533,153,395,106"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,237,82,262"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="46,183,46,222,41,222,41,183"/>
+</map>
