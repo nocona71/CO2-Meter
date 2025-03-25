@@ -1,0 +1,18 @@
+<map id="Logger::debug" name="Logger::debug">
+<area shape="rect" id="Node000001" title="Logs a debug message." alt="" coords="386,129,489,154"/>
+<area shape="rect" id="Node000002" href="$classSensorManager.html#ab621f498c240f93c0d9a7e47cbb669c6" title="Retrieves the current pressure reading from the BMP280 sensor." alt="" coords="123,5,314,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="416,120,381,84,337,51,292,33,294,28,339,46,385,80,419,116"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop for retrieving sensor data and updating the display." alt="" coords="5,80,51,105"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="403,123,372,107,337,95,256,83,174,81,103,86,51,92,51,86,102,80,174,76,256,78,339,90,374,102,406,119"/>
+<area shape="rect" id="Node000004" href="$classSensorManager.html#aa4207d6b919d2deac9d8b95c6a36f8b9" title="Retrieves the current temperature reading from the BMP280 sensor." alt="" coords="99,104,338,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="370,137,330,132,331,127,371,131"/>
+<area shape="rect" id="Node000005" href="$classSensorManager.html#a4fa7cbb9b36b933c0ca03553ba4db966" title="Checks if new data is available from the sensors." alt="" coords="114,153,322,178"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="371,152,323,157,323,152,370,146"/>
+<area shape="rect" id="Node000006" href="$classSensorManager.html#ad6448faa4a1a1e9647682ee4a7005d80" title="Resets the calibration flag stored in EEPROM." alt="" coords="101,203,336,227"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="402,164,339,192,294,205,293,199,337,187,400,159"/>
+<area shape="rect" id="Node000007" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Initializes the system, including the display, sensors, and logger." alt="" coords="192,252,245,277"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="420,168,386,206,364,225,339,241,291,259,246,266,245,260,290,253,337,237,360,221,382,202,416,165"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="138,37,100,51,48,82,45,77,98,46,136,32"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="100,104,51,98,51,92,101,99"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="121,151,98,143,67,126,43,107,46,103,70,121,100,138,123,146"/>
+</map>

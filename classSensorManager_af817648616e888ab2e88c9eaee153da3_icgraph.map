@@ -1,0 +1,5 @@
+<map id="SensorManager::getTemperatureSCD" name="SensorManager::getTemperatureSCD">
+<area shape="rect" id="Node000001" title="Retrieves the current temperature reading from the SCD30 sensor." alt="" coords="99,5,337,30"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop for retrieving sensor data and updating the display." alt="" coords="5,5,51,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,20,51,20,51,15,83,15"/>
+</map>

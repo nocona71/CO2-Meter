@@ -1,0 +1,25 @@
+<map id="Logger::info" name="Logger::info">
+<area shape="rect" id="Node000001" title="Logs an informational message." alt="" coords="601,196,691,221"/>
+<area shape="rect" id="Node000002" href="$classSensorManager.html#a3608ee33385f64e74410127d59c2638e" title="Calibrates the SCD30 sensor using the forced recalibration factor." alt="" coords="384,5,553,44"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="631,183,600,125,578,93,552,65,523,47,526,42,555,61,582,90,605,122,636,181"/>
+<area shape="rect" id="Node000003" href="$classSensorManager.html#a9daa366f758f7419ab22fb3c243801fe" title="Checks if the SCD30 sensor needs calibration and performs calibration if necessary." alt="" coords="107,56,336,95"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="626,185,595,148,574,130,552,116,500,96,444,83,389,75,336,73,336,67,389,70,445,77,501,91,555,112,578,126,598,144,630,182"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d" title="Initializes the system, including the display, sensors, and logger." alt="" coords="5,199,59,224"/>
+<area shape="poly" id="edge14_Node000001_Node000004" title=" " alt="" coords="593,194,500,168,378,146,311,140,242,139,173,146,108,162,74,179,48,201,44,196,71,175,106,157,173,141,242,134,311,134,379,140,502,163,595,188"/>
+<area shape="rect" id="Node000005" href="$classDisplayManager.html#aeb1c8224403ea2595f202e5d93380609" title="Initializes the OLED display." alt="" coords="137,171,306,196"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="585,208,306,191,307,186,586,202"/>
+<area shape="rect" id="Node000006" href="$classSensorManager.html#aded8aff6d741a64d0c34668a0694dd3d" title="Initializes the SCD30 and BMP280 sensors." alt="" coords="138,220,304,259"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="586,216,305,236,305,231,585,210"/>
+<area shape="rect" id="Node000007" href="$main_8cpp.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop for retrieving sensor data and updating the display." alt="" coords="446,271,491,296"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="607,231,554,255,493,278,491,273,552,250,605,226"/>
+<area shape="rect" id="Node000008" href="$classDisplayManager.html#a2d6f5efef5cb7e03c820ab14c4adc217" title="Runs a display check to verify the OLED functionality." alt="" coords="129,288,314,327"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="632,236,600,276,579,295,554,310,494,328,431,336,370,335,314,329,315,324,370,330,431,330,493,323,552,305,576,291,596,273,628,233"/>
+<area shape="rect" id="Node000009" href="$classI2CScanner.html#ad3b7b4bc25e6c1e8b89e702862a56af5" title="Scans the I2C bus for connected devices." alt="" coords="406,370,531,394"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="636,237,605,295,582,326,555,353,523,371,520,367,552,349,578,323,601,292,632,234"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="369,48,320,58,318,53,368,42"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="129,104,108,116,86,136,67,159,42,200,37,197,63,156,82,132,105,112,126,99"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="122,201,60,210,59,205,121,195"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="122,227,59,218,60,213,123,222"/>
+<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="131,284,105,272,71,249,45,226,48,222,75,245,108,268,134,280"/>
+<area shape="poly" id="edge13_Node000009_Node000004" title=" " alt="" coords="391,394,325,396,251,390,175,373,139,359,105,340,77,314,56,282,34,225,39,223,61,279,81,311,108,336,141,354,177,368,252,385,325,391,390,389"/>
+</map>
