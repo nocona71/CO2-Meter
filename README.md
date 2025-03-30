@@ -74,14 +74,15 @@ brew install make            # For macOS
   - SCD30 CO2 sensor.
   - BMP280 pressure sensor.
   - SSD1306 OLED display.
-  - I2C connections for the sensors and display.
+  - I2C connections for the sensors, display and power source.
+  - 5V power source
   - 2 tiny bread boards
   
 ### Wiring Diagram
 The following diagram shows the connections between the ESP8266, SCD30, BMP280, and SSD1306 OLED display:
 
 
-![Wirinig of the circuit on 2 tiny bread boards](CO2-Meter_bb.png)
+![Wireing of the circuit on 2 tiny bread boards](CO2-Meter_bb.png)
 
 
 
