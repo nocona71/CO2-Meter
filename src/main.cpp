@@ -53,8 +53,10 @@ void setup() {
 
     Logger::info("Initializing...");
 
-#if RUN_I2C_SCANNER == TRUE
-    i2cScanner.scan();
+#ifdef RUN_I2C_SCANNER
+    if (RUN_I2C_SCANNER == true) {
+        // Run I2C scanner code
+    }
 #endif
 
     // Initialize the display
@@ -63,8 +65,10 @@ void setup() {
         for (;;); // Halt if display initialization fails
     }
 
-#if RUN_DISPLAY_CHECK == TRUE
-    displayManager.runDisplayCheck();
+#ifdef RUN_DISPLAY_CHECK
+    if (RUN_DISPLAY_CHECK == true) {
+        // Run display check code
+    }
 #endif
 
     displayManager.splashScreen("Initializing...");
