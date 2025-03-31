@@ -74,7 +74,7 @@ brew install make            # For macOS
   - SCD30 CO2 sensor.
   - BMP280 pressure sensor.
   - SSD1306 OLED display.
-  - I2C connections for the sensors, display and power source.
+  - colored wires for connecting the microcontroller sensors, display and power source.
   - 5V power source
   - 2 tiny bread boards
   
