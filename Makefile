@@ -5,7 +5,7 @@ PLATFORMIO = platformio
 DOXYGEN = doxygen
 
 # Default target
-all: build
+all: clean build
 
 # Build the main project
 build:
