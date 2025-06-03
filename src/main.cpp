@@ -45,6 +45,7 @@ I2CScanner i2cScanner;
 void setup() {
     Serial.begin(115200);
     while (!Serial);
+    EEPROM.begin(512);
 
     Logger::error("This is test error message.");    // Should always print
     Logger::warning("This test a warning message."); // Should not print if LOG_LEVEL=LOG_ERROR
